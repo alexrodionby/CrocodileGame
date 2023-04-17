@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -239,7 +239,7 @@
 				};
 			};
 			buildConfigurationList = A12FDF2829EC536400B1E069 /* Build configuration list for PBXProject "CrocodileGame" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
