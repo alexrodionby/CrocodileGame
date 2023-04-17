@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27570B5929EDD351000C0808 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5829EDD351000C0808 /* BaseController.swift */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27570B5829EDD351000C0808 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF4D29EC571D00B1E069 /* GameViewController.swift */,
+				27570B5829EDD351000C0808 /* BaseController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */,
 				A12FDF4E29EC571D00B1E069 /* GameViewController.swift in Sources */,
 				A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */,
+				27570B5929EDD351000C0808 /* BaseController.swift in Sources */,
 				A12FDF5429EC580500B1E069 /* GameResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
