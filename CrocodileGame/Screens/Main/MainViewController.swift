@@ -65,7 +65,8 @@ class MainViewController: UIViewController {
         crocodileImageView.translatesAutoresizingMaskIntoConstraints = false
         crocodileImageView.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
-            crocodileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 172),
+            crocodileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            crocodileImageView.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 172),
             crocodileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 54),
             crocodileImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53),
             crocodileImageView.widthAnchor.constraint(equalToConstant: 268),
