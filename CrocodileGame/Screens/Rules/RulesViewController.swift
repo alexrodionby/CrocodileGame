@@ -8,13 +8,16 @@
 import UIKit
 
 class RulesViewController: UIViewController {
+        private let scrollView = UIScrollView()
+        private let rulesLabel = UILabel()
+        private let backgroundImageView = UIImageView(image: UIImage(named: "background"))
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setupLayout()
+        }
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
