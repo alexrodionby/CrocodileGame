@@ -123,6 +123,12 @@ extension GameViewController {
                                      repeats: true)
     }
     
+    private func playSound() {
+        guard let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else { return }
+        player = try! AVAudioPlayer(contentsOf: url)
+        player.play()
+    }
+    
     @objc func updateTimer() {
         if secondsPassed < totalTime {
             secondsPassed += 1
@@ -130,6 +136,7 @@ extension GameViewController {
         } else {
             timer?.invalidate()
             titleLabel.text = "DONE!"
+            playSound()
         }
     }
     

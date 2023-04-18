@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27570B5929EDD351000C0808 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5829EDD351000C0808 /* BaseController.swift */; };
 		27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */; };
+		27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B5D29EE8CB8000C0808 /* alarm.mp3 */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		27570B5829EDD351000C0808 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		27570B5D29EE8CB8000C0808 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF3629EC536400B1E069 /* Main.storyboard */,
+				27570B5D29EE8CB8000C0808 /* alarm.mp3 */,
 				A12FDF3B29EC536500B1E069 /* LaunchScreen.storyboard */,
 				A12FDF3E29EC536500B1E069 /* Info.plist */,
 				A12FDF3929EC536500B1E069 /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */,
 				A12FDF3D29EC536500B1E069 /* LaunchScreen.storyboard in Resources */,
 				A12FDF3A29EC536500B1E069 /* Assets.xcassets in Resources */,
 				A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */,
