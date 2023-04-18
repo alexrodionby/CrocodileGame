@@ -57,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27570B5C29EE2E51000C0808 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				27570B5829EDD351000C0808 /* BaseController.swift */,
+				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		A12FDF2429EC536400B1E069 = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF4D29EC571D00B1E069 /* GameViewController.swift */,
-				27570B5829EDD351000C0808 /* BaseController.swift */,
-				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
+				27570B5C29EE2E51000C0808 /* Base */,
 			);
 			path = Game;
 			sourceTree = "<group>";
