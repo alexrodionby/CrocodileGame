@@ -15,6 +15,9 @@ class RulesViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             setupLayout()
+            navigationItem.title = "Правила"
+            navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left")
+            navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.circle.fill")
         }
         // Do any additional setup after loading the view.
     }

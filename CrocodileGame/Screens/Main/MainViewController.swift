@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
     
     @objc func rulesButtonHandler() {
         print("pressed button")
+        let controller = RulesViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     private func setapStartButton() {
@@ -56,6 +58,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(backgroundImageView)
+        
+        navigationItem.backButtonTitle = ""
+        
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
