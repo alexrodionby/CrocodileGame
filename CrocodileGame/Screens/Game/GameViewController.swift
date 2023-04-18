@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class GameViewController: BaseController {
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
@@ -11,7 +12,15 @@ class GameViewController: BaseController {
     private let skipButton = UIButton(type: .system)
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
+    var timer: Timer?
+    var player: AVAudioPlayer!
+    var totalTime = 59
+    var secondsPassed = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startTimer()
+    }
 }
 
 extension GameViewController {
@@ -101,6 +110,27 @@ extension GameViewController {
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow:
                                                                 buttonStack.bottomAnchor, multiplier: 1)
         ])
+    }
+    
+    private func startTimer() {
+        timer?.invalidate()
+        secondsPassed = 0
+        totalTime = 59
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if secondsPassed < totalTime {
+            secondsPassed += 1
+            timerLabel.text = "00:\(String(format: "%02d", totalTime - secondsPassed))"
+        } else {
+            timer?.invalidate()
+            titleLabel.text = "DONE!"
+        }
     }
     
     @objc func rightButtonHandler() {
