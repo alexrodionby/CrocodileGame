@@ -10,7 +10,7 @@ extension UIButton {
     func configure(with type: CrocodileButtonType, title: String) {
         layer.cornerRadius = 10
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        heightAnchor.constraint(equalToConstant: 60).isActive = true
         tintColor = .white
         setTitle(title, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 17)

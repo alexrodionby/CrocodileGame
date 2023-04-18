@@ -25,7 +25,8 @@ class MainViewController: UIViewController {
             rulesButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 39),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            rulesButton.heightAnchor.constraint(equalToConstant: 63)
+            rulesButton.heightAnchor.constraint(equalToConstant: 63),
+            rulesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
     
@@ -48,6 +49,8 @@ class MainViewController: UIViewController {
     }
     @objc func startButtonHandler() {
         print("pressed button")
+        let controller = GameViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     override func viewDidLoad() {
@@ -66,7 +69,7 @@ class MainViewController: UIViewController {
         crocodileImageView.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
             crocodileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            crocodileImageView.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 172),
+           // crocodileImageView.bottomAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 172),
             crocodileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 54),
             crocodileImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53),
             crocodileImageView.widthAnchor.constraint(equalToConstant: 268),
