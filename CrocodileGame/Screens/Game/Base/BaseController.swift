@@ -6,20 +6,29 @@ enum NavBarPosition {
 }
 
 class BaseController: UIViewController {
+    let backgroundImage = UIImageView(image: UIImage(named: "background"))
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         layoutViews()
         configureAppearance()
     }
-    let backgroundImage = UIImageView(image: UIImage(named: "background"))
 }
 
 @objc extension BaseController {
     func setupViews() {
-        view.addSubview(backgroundImage)
+        setupBackgroundImage()
     }
-    func layoutViews() {
+    func layoutViews() {}
+    func configureAppearance() {}
+    func navBarLeftButtonHandler() {}
+    func navBarRightButtonHandler() {}
+}
+
+extension BaseController {
+    private func setupBackgroundImage() {
+        view.addSubview(backgroundImage)
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -27,14 +36,6 @@ class BaseController: UIViewController {
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    func configureAppearance() {
-        
-    }
-    func navBarLeftButtonHandler() {}
-    func navBarRightButtonHandler() {}
-}
-
-extension BaseController {
     func addNavBarButton(at position: NavBarPosition, with title: String) {
         let button = UIButton(type: .system)
         
@@ -47,7 +48,6 @@ extension BaseController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         }
     }
-    
     func setTitleForNavBarButton(_ title: String, at position: NavBarPosition) {
         switch position {
         case .left:
