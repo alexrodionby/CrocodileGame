@@ -13,6 +13,7 @@ enum Topics: String {
 struct WordsRespondse: Codable {
     let words: [String]
 }
+
 struct CrocodileBrain {
     var words: [String] = Bundle.main.decode(
         WordsRespondse.self,
