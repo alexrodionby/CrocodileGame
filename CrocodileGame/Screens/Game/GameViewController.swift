@@ -14,12 +14,15 @@ class GameViewController: BaseController {
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.start()
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func start() {
@@ -29,9 +32,9 @@ class GameViewController: BaseController {
     }
     
     private func stop() {
-        viewModel.stopTimer()
         titleLabel.text = ""
         descriptionLabel.text = ""
+        viewModel.stopTimer()
     }
 }
 // MARK: Setup
@@ -72,12 +75,14 @@ extension GameViewController {
     private func setupTitleLabel() {
         view.addSubview(titleLabel)
         titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 0
         titleLabel.font = .italicSystemFont(ofSize: 48)
     }
     
     private func setupDescriptionLabel() {
         view.addSubview(descriptionLabel)
         descriptionLabel.textAlignment = .center
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.font = .italicSystemFont(ofSize: 20)
     }
     
