@@ -1,7 +1,9 @@
 import UIKit
 
 class GameViewController: BaseController {
-    private var brain = CrocodileBrain()
+    private var brain = CrocodileBrain(words: Bundle.main.decode(
+        WordsRespondse.self,
+        from: UserDefaults.standard.topics).words.shuffled())
     private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
@@ -41,6 +43,7 @@ class GameViewController: BaseController {
 extension GameViewController {
     override func setupViews() {
         super.setupViews()
+        UserDefaults.standard.topics = Topics.easy.rawValue
         setupLogoImage()
         setupTimerLabel()
         setupTitleLabel()
