@@ -17,7 +17,7 @@ struct WordsRespondse: Codable {
 struct CrocodileBrain {
     var words: [String] = Bundle.main.decode(
         WordsRespondse.self,
-        from: Topics.hardcore.rawValue).words.shuffled()
+        from: Topics.easy.rawValue).words.shuffled()
     mutating func getTitle() -> String {
         let result = words.isEmpty ? "Конец игры" : words.removeFirst()
         return result
