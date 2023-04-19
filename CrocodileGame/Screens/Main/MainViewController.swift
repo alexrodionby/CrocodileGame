@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
     }
     @objc func startButtonHandler() {
         print("pressed button")
+        UserDefaults.standard.topics = Topics.easy.rawValue
         let controller = GameViewController()
         navigationController?.pushViewController(controller, animated: true)
     }

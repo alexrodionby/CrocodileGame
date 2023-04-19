@@ -5,6 +5,7 @@ extension Bundle {
                               from file: String,
                               dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
                               keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
+        print(UserDefaults.standard.topics, "topics")
         guard let url = self.url(forResource: file, withExtension: nil) else {
             fatalError("Error: Failed to locate \(file) in bundle.")
         }
