@@ -120,8 +120,23 @@ extension GameViewController {
     }
     
     @objc func skipButtonHandler() {
-        print(#function)
+        let skipAction = UIAlertAction(title: "Да",
+                                       style: .destructive) { (action) in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+
+        let cancelAction = UIAlertAction(title: "Отмена",
+                  style: .cancel) { _ in }
+             
+        let alert = UIAlertController(title: "Сбросить игру?",
+                    message: "Вы хотите сбросить вашу игру и вернуться в главное меню?",
+                                      preferredStyle: .alert)
+        alert.addAction(skipAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
     }
+    
+    
 }
 
 extension GameViewController: GameViewModelProtocol {
