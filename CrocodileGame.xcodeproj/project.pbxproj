@@ -105,15 +105,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		27570B5F29EF60BC000C0808 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				27570B6029EF6102000C0808 /* CrocodileBrain.swift */,
-				27570B6229EF613D000C0808 /* GameViewModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		27570B6429EF7238000C0808 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF3629EC536400B1E069 /* Main.storyboard */,
+				27570B6429EF7238000C0808 /* Data */,
 				27570B7729EF72A1000C0808 /* Sounds */,
 				A12FDF3B29EC536500B1E069 /* LaunchScreen.storyboard */,
 				A12FDF3E29EC536500B1E069 /* Info.plist */,
@@ -236,8 +228,6 @@
 		A12FDF5C29EC590800B1E069 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				27570B6429EF7238000C0808 /* Data */,
-				27570B5F29EF60BC000C0808 /* Model */,
 				A12FDF4D29EC571D00B1E069 /* GameViewController.swift */,
 				27570B5C29EE2E51000C0808 /* Base */,
 			);
@@ -287,6 +277,8 @@
 		A1D9118529EDA11C000D07CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				27570B6229EF613D000C0808 /* GameViewModel.swift */,
+				27570B6029EF6102000C0808 /* CrocodileBrain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -557,6 +549,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,6 +584,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

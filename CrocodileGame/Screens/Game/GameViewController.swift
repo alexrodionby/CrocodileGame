@@ -129,9 +129,9 @@ extension GameViewController {
         stop()
         let controller = CorrectViewController()
         controller.view.backgroundColor = UIColor(named: "greenButton")
-        present(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.dismiss(animated: true)
+            controller.navigationController?.popViewController(animated: true)
             self.start()
         }
     }
@@ -140,9 +140,9 @@ extension GameViewController {
         stop()
         let controller = WrongViewController()
         controller.view.backgroundColor = UIColor(named: "redButton")
-        present(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.dismiss(animated: true)
+            controller.navigationController?.popViewController(animated: true)
             self.start()
         }
     }

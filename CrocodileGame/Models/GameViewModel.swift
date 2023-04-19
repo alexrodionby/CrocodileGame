@@ -25,8 +25,9 @@ final class GameViewModel {
         timer?.invalidate()
     }
     
-    private func playSound() {
-        guard let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else { return }
+    func playSound(_ title: String = "fail") {
+        guard let url = Bundle.main.url(forResource: title, withExtension: "mp3") else { return }
+        if let player = player { player.stop() }
         player = try! AVAudioPlayer(contentsOf: url)
         player.play()
     }
