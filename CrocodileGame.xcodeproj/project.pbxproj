@@ -10,6 +10,8 @@
 		27570B5929EDD351000C0808 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5829EDD351000C0808 /* BaseController.swift */; };
 		27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */; };
 		27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B5D29EE8CB8000C0808 /* alarm.mp3 */; };
+		27570B6129EF6102000C0808 /* CrocodileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B6029EF6102000C0808 /* CrocodileBrain.swift */; };
+		27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B6229EF613D000C0808 /* GameViewModel.swift */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 		27570B5829EDD351000C0808 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		27570B5D29EE8CB8000C0808 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		27570B6029EF6102000C0808 /* CrocodileBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrocodileBrain.swift; sourceTree = "<group>"; };
+		27570B6229EF613D000C0808 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,15 @@
 				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		27570B5F29EF60BC000C0808 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27570B6029EF6102000C0808 /* CrocodileBrain.swift */,
+				27570B6229EF613D000C0808 /* GameViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A12FDF2429EC536400B1E069 = {
@@ -160,6 +173,7 @@
 		A12FDF5C29EC590800B1E069 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				27570B5F29EF60BC000C0808 /* Model */,
 				A12FDF4D29EC571D00B1E069 /* GameViewController.swift */,
 				27570B5C29EE2E51000C0808 /* Base */,
 			);
@@ -295,6 +309,7 @@
 				27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */,
 				A12FDF5629EC583600B1E069 /* RulesViewController.swift in Sources */,
 				A12FDF5229EC574D00B1E069 /* WrongViewController.swift in Sources */,
+				27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */,
 				A12FDF5029EC573600B1E069 /* CorrectViewController.swift in Sources */,
 				A12FDF4C29EC570000B1E069 /* CategoryViewController.swift in Sources */,
 				A12FDF5829EC589800B1E069 /* ResultAllViewController.swift in Sources */,
@@ -303,6 +318,7 @@
 				A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */,
 				A12FDF4E29EC571D00B1E069 /* GameViewController.swift in Sources */,
 				A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */,
+				27570B6129EF6102000C0808 /* CrocodileBrain.swift in Sources */,
 				27570B5929EDD351000C0808 /* BaseController.swift in Sources */,
 				A12FDF5429EC580500B1E069 /* GameResultViewController.swift in Sources */,
 			);

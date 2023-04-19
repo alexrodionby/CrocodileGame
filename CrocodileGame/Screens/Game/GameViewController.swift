@@ -1,7 +1,8 @@
 import UIKit
-import AVFoundation
 
 class GameViewController: BaseController {
+    private let brain = CrocodileBrain()
+    private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
     private let titleLabel = UILabel()
@@ -12,14 +13,11 @@ class GameViewController: BaseController {
     private let skipButton = UIButton(type: .system)
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
-    var timer: Timer?
-    var player: AVAudioPlayer!
-    var totalTime = 59
-    var secondsPassed = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startTimer()
+        viewModel.startTimer()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 
@@ -35,6 +33,7 @@ extension GameViewController {
         setupWrongButton()
         setupSkipButton()
         setupButtonStack()
+        viewModel.delegate = self
     }
     
     private func setupLogoImage() {
@@ -59,14 +58,14 @@ extension GameViewController {
     
     private func setupTitleLabel() {
         view.addSubview(titleLabel)
-        titleLabel.text = "Картошка"
+        titleLabel.text = brain.getTitle()
         titleLabel.textAlignment = .center
         titleLabel.font = .italicSystemFont(ofSize: 48)
     }
     
     private func setupDescriptionLabel() {
         view.addSubview(descriptionLabel)
-        descriptionLabel.text = "объясни с помощью жестов"
+        descriptionLabel.text = brain.getDescription()
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = .italicSystemFont(ofSize: 20)
     }
@@ -112,34 +111,6 @@ extension GameViewController {
         ])
     }
     
-    private func startTimer() {
-        timer?.invalidate()
-        secondsPassed = 0
-        totalTime = 59
-        timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
-    }
-    
-    private func playSound() {
-        guard let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else { return }
-        player = try! AVAudioPlayer(contentsOf: url)
-        player.play()
-    }
-    
-    @objc func updateTimer() {
-        if secondsPassed < totalTime {
-            secondsPassed += 1
-            timerLabel.text = "00:\(String(format: "%02d", totalTime - secondsPassed))"
-        } else {
-            timer?.invalidate()
-            titleLabel.text = "DONE!"
-            playSound()
-        }
-    }
-    
     @objc func rightButtonHandler() {
         print(#function)
     }
@@ -150,5 +121,11 @@ extension GameViewController {
     
     @objc func skipButtonHandler() {
         print(#function)
+    }
+}
+
+extension GameViewController: GameViewModelProtocol {
+    func updateUI(seconds: Int) {
+        timerLabel.text = String(format: "00:%02d", seconds)
     }
 }

@@ -7,10 +7,10 @@ public enum CrocodileButtonType {
 }
 
 extension UIButton {
-    func configure(with type: CrocodileButtonType, title: String) {
+    func configure(with type: CrocodileButtonType, title: String, height: CGFloat = 60) {
         layer.cornerRadius = 10
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 60).isActive = true
+        heightAnchor.constraint(equalToConstant: height).isActive = true
         tintColor = .white
         setTitle(title, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 17)
