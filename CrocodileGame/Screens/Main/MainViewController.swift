@@ -18,14 +18,13 @@ class MainViewController: UIViewController {
     private func setapRulesButton() {
         view.addSubview(rulesButton)
         rulesButton.translatesAutoresizingMaskIntoConstraints = false
-        rulesButton.configure(with: .green, title: "Правила")
+        rulesButton.configure(with: .green, title: "Правила", height: 63)
         rulesButton.addTarget(self, action: #selector(rulesButtonHandler), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
             rulesButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 39),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            rulesButton.heightAnchor.constraint(equalToConstant: 63),
             rulesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
@@ -39,14 +38,13 @@ class MainViewController: UIViewController {
     private func setapStartButton() {
         view.addSubview(startButton)
         startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.configure(with: .green, title: "Старт игры")
+        startButton.configure(with: .green, title: "Старт игры", height: 83)
         startButton.addTarget(self, action: #selector(startButtonHandler), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
             startButton.topAnchor.constraint(equalTo: crocodileImageView.bottomAnchor, constant: 48),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -51),
-            startButton.heightAnchor.constraint(equalToConstant: 83)
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -51)
         ])
     }
     @objc func startButtonHandler() {
