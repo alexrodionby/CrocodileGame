@@ -12,6 +12,22 @@
 		27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B5D29EE8CB8000C0808 /* alarm.mp3 */; };
 		27570B6129EF6102000C0808 /* CrocodileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B6029EF6102000C0808 /* CrocodileBrain.swift */; };
 		27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B6229EF613D000C0808 /* GameViewModel.swift */; };
+		27570B6E29EF724C000C0808 /* NewYear.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6529EF724B000C0808 /* NewYear.json */; };
+		27570B6F29EF724C000C0808 /* Quests.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6629EF724B000C0808 /* Quests.json */; };
+		27570B7029EF724C000C0808 /* EasyWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6729EF724B000C0808 /* EasyWords.json */; };
+		27570B7129EF724C000C0808 /* Teams.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6829EF724B000C0808 /* Teams.json */; };
+		27570B7229EF724C000C0808 /* Summer.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6929EF724B000C0808 /* Summer.json */; };
+		27570B7329EF724C000C0808 /* Phraseological.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6A29EF724B000C0808 /* Phraseological.json */; };
+		27570B7429EF724C000C0808 /* Hardcore.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6B29EF724B000C0808 /* Hardcore.json */; };
+		27570B7529EF724C000C0808 /* Normal.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6C29EF724B000C0808 /* Normal.json */; };
+		27570B7629EF724C000C0808 /* QuickGame.json in Resources */ = {isa = PBXBuildFile; fileRef = 27570B6D29EF724C000C0808 /* QuickGame.json */; };
+		27570B7E29EF72CF000C0808 /* roundEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7829EF72CF000C0808 /* roundEnd.wav */; };
+		27570B7F29EF72CF000C0808 /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7929EF72CF000C0808 /* fail.mp3 */; };
+		27570B8029EF72CF000C0808 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7A29EF72CF000C0808 /* wrong.wav */; };
+		27570B8129EF72CF000C0808 /* swipe.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7B29EF72CF000C0808 /* swipe.wav */; };
+		27570B8229EF72CF000C0808 /* lastSeconds.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7C29EF72CF000C0808 /* lastSeconds.wav */; };
+		27570B8329EF72CF000C0808 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7D29EF72CF000C0808 /* right.wav */; };
+		27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B8429EF7318000C0808 /* Bundle+Extension.swift */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -34,6 +50,22 @@
 		27570B5D29EE8CB8000C0808 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		27570B6029EF6102000C0808 /* CrocodileBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrocodileBrain.swift; sourceTree = "<group>"; };
 		27570B6229EF613D000C0808 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		27570B6529EF724B000C0808 /* NewYear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewYear.json; sourceTree = "<group>"; };
+		27570B6629EF724B000C0808 /* Quests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Quests.json; sourceTree = "<group>"; };
+		27570B6729EF724B000C0808 /* EasyWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EasyWords.json; sourceTree = "<group>"; };
+		27570B6829EF724B000C0808 /* Teams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Teams.json; sourceTree = "<group>"; };
+		27570B6929EF724B000C0808 /* Summer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Summer.json; sourceTree = "<group>"; };
+		27570B6A29EF724B000C0808 /* Phraseological.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Phraseological.json; sourceTree = "<group>"; };
+		27570B6B29EF724B000C0808 /* Hardcore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Hardcore.json; sourceTree = "<group>"; };
+		27570B6C29EF724B000C0808 /* Normal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Normal.json; sourceTree = "<group>"; };
+		27570B6D29EF724C000C0808 /* QuickGame.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuickGame.json; sourceTree = "<group>"; };
+		27570B7829EF72CF000C0808 /* roundEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = roundEnd.wav; sourceTree = "<group>"; };
+		27570B7929EF72CF000C0808 /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fail.mp3; sourceTree = "<group>"; };
+		27570B7A29EF72CF000C0808 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
+		27570B7B29EF72CF000C0808 /* swipe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swipe.wav; sourceTree = "<group>"; };
+		27570B7C29EF72CF000C0808 /* lastSeconds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lastSeconds.wav; sourceTree = "<group>"; };
+		27570B7D29EF72CF000C0808 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right.wav; sourceTree = "<group>"; };
+		27570B8429EF7318000C0808 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +100,7 @@
 			children = (
 				27570B5829EDD351000C0808 /* BaseController.swift */,
 				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
+				27570B8429EF7318000C0808 /* Bundle+Extension.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -79,6 +112,36 @@
 				27570B6229EF613D000C0808 /* GameViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		27570B6429EF7238000C0808 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				27570B6729EF724B000C0808 /* EasyWords.json */,
+				27570B6B29EF724B000C0808 /* Hardcore.json */,
+				27570B6529EF724B000C0808 /* NewYear.json */,
+				27570B6C29EF724B000C0808 /* Normal.json */,
+				27570B6A29EF724B000C0808 /* Phraseological.json */,
+				27570B6629EF724B000C0808 /* Quests.json */,
+				27570B6D29EF724C000C0808 /* QuickGame.json */,
+				27570B6929EF724B000C0808 /* Summer.json */,
+				27570B6829EF724B000C0808 /* Teams.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		27570B7729EF72A1000C0808 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				27570B5D29EE8CB8000C0808 /* alarm.mp3 */,
+				27570B7929EF72CF000C0808 /* fail.mp3 */,
+				27570B7C29EF72CF000C0808 /* lastSeconds.wav */,
+				27570B7D29EF72CF000C0808 /* right.wav */,
+				27570B7829EF72CF000C0808 /* roundEnd.wav */,
+				27570B7B29EF72CF000C0808 /* swipe.wav */,
+				27570B7A29EF72CF000C0808 /* wrong.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		A12FDF2429EC536400B1E069 = {
@@ -122,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF3629EC536400B1E069 /* Main.storyboard */,
-				27570B5D29EE8CB8000C0808 /* alarm.mp3 */,
+				27570B7729EF72A1000C0808 /* Sounds */,
 				A12FDF3B29EC536500B1E069 /* LaunchScreen.storyboard */,
 				A12FDF3E29EC536500B1E069 /* Info.plist */,
 				A12FDF3929EC536500B1E069 /* Assets.xcassets */,
@@ -173,6 +236,7 @@
 		A12FDF5C29EC590800B1E069 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				27570B6429EF7238000C0808 /* Data */,
 				27570B5F29EF60BC000C0808 /* Model */,
 				A12FDF4D29EC571D00B1E069 /* GameViewController.swift */,
 				27570B5C29EE2E51000C0808 /* Base */,
@@ -292,9 +356,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27570B7329EF724C000C0808 /* Phraseological.json in Resources */,
 				27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */,
+				27570B8029EF72CF000C0808 /* wrong.wav in Resources */,
 				A12FDF3D29EC536500B1E069 /* LaunchScreen.storyboard in Resources */,
+				27570B8229EF72CF000C0808 /* lastSeconds.wav in Resources */,
+				27570B6E29EF724C000C0808 /* NewYear.json in Resources */,
+				27570B7529EF724C000C0808 /* Normal.json in Resources */,
+				27570B8129EF72CF000C0808 /* swipe.wav in Resources */,
+				27570B7E29EF72CF000C0808 /* roundEnd.wav in Resources */,
+				27570B8329EF72CF000C0808 /* right.wav in Resources */,
+				27570B7029EF724C000C0808 /* EasyWords.json in Resources */,
+				27570B7629EF724C000C0808 /* QuickGame.json in Resources */,
+				27570B7129EF724C000C0808 /* Teams.json in Resources */,
+				27570B7429EF724C000C0808 /* Hardcore.json in Resources */,
 				A12FDF3A29EC536500B1E069 /* Assets.xcassets in Resources */,
+				27570B7F29EF72CF000C0808 /* fail.mp3 in Resources */,
+				27570B7229EF724C000C0808 /* Summer.json in Resources */,
+				27570B6F29EF724C000C0808 /* Quests.json in Resources */,
 				A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +388,7 @@
 				27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */,
 				A12FDF5629EC583600B1E069 /* RulesViewController.swift in Sources */,
 				A12FDF5229EC574D00B1E069 /* WrongViewController.swift in Sources */,
+				27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */,
 				27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */,
 				A12FDF5029EC573600B1E069 /* CorrectViewController.swift in Sources */,
 				A12FDF4C29EC570000B1E069 /* CategoryViewController.swift in Sources */,
