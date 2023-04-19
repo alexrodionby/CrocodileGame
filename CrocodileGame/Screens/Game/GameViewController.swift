@@ -1,7 +1,8 @@
 import UIKit
-import AVFoundation
 
 class GameViewController: BaseController {
+    private var brain = CrocodileBrain()
+    private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
     private let titleLabel = UILabel()
@@ -12,17 +13,28 @@ class GameViewController: BaseController {
     private let skipButton = UIButton(type: .system)
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
-    var timer: Timer?
-    var player: AVAudioPlayer!
-    var totalTime = 59
-    var secondsPassed = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startTimer()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.start()
+        }
+    }
+    
+    private func start() {
+        viewModel.startTimer()
+        titleLabel.text = brain.getTitle()
+        descriptionLabel.text = brain.getDescription()
+    }
+    
+    private func stop() {
+        viewModel.stopTimer()
+        titleLabel.text = ""
+        descriptionLabel.text = ""
     }
 }
-
+// MARK: Setup
 extension GameViewController {
     override func setupViews() {
         super.setupViews()
@@ -35,6 +47,7 @@ extension GameViewController {
         setupWrongButton()
         setupSkipButton()
         setupButtonStack()
+        viewModel.delegate = self
     }
     
     private func setupLogoImage() {
@@ -49,7 +62,6 @@ extension GameViewController {
     private func setupTimerLabel() {
         view.addSubview(timerLabel)
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerLabel.text = "00:59"
         timerLabel.font = .italicSystemFont(ofSize: 48)
         NSLayoutConstraint.activate([
             timerLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
@@ -59,14 +71,12 @@ extension GameViewController {
     
     private func setupTitleLabel() {
         view.addSubview(titleLabel)
-        titleLabel.text = "Картошка"
         titleLabel.textAlignment = .center
         titleLabel.font = .italicSystemFont(ofSize: 48)
     }
     
     private func setupDescriptionLabel() {
         view.addSubview(descriptionLabel)
-        descriptionLabel.text = "объясни с помощью жестов"
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = .italicSystemFont(ofSize: 20)
     }
@@ -84,17 +94,20 @@ extension GameViewController {
     
     private func setupRightButton() {
         rightButton.configure(with: .green, title: "Правильно")
-        rightButton.addTarget(self, action: #selector(rightButtonHandler), for: .primaryActionTriggered)
+        rightButton.addTarget(self, action: #selector(rightButtonHandler),
+                              for: .primaryActionTriggered)
     }
     
     private func setupWrongButton() {
         wrongButton.configure(with: .red, title: "Нарушил правила")
-        wrongButton.addTarget(self, action: #selector(wrongButtonHandler), for: .primaryActionTriggered)
+        wrongButton.addTarget(self, action: #selector(wrongButtonHandler),
+                              for: .primaryActionTriggered)
     }
     
     private func setupSkipButton() {
         skipButton.configure(with: .gray, title: "Сбросить")
-        skipButton.addTarget(self, action: #selector(skipButtonHandler), for: .primaryActionTriggered)
+        skipButton.addTarget(self, action: #selector(skipButtonHandler),
+                             for: .primaryActionTriggered)
     }
     
     private func setupButtonStack() {
@@ -112,43 +125,48 @@ extension GameViewController {
         ])
     }
     
-    private func startTimer() {
-        timer?.invalidate()
-        secondsPassed = 0
-        totalTime = 59
-        timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
-    }
-    
-    private func playSound() {
-        guard let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else { return }
-        player = try! AVAudioPlayer(contentsOf: url)
-        player.play()
-    }
-    
-    @objc func updateTimer() {
-        if secondsPassed < totalTime {
-            secondsPassed += 1
-            timerLabel.text = "00:\(String(format: "%02d", totalTime - secondsPassed))"
-        } else {
-            timer?.invalidate()
-            titleLabel.text = "DONE!"
-            playSound()
+    @objc func rightButtonHandler() {
+        stop()
+        let controller = CorrectViewController()
+        controller.view.backgroundColor = UIColor(named: "greenButton")
+        present(controller, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            controller.dismiss(animated: true)
+            self.start()
         }
     }
     
-    @objc func rightButtonHandler() {
-        print(#function)
-    }
-    
     @objc func wrongButtonHandler() {
-        print(#function)
+        stop()
+        let controller = WrongViewController()
+        controller.view.backgroundColor = UIColor(named: "redButton")
+        present(controller, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            controller.dismiss(animated: true)
+            self.start()
+        }
     }
     
     @objc func skipButtonHandler() {
-        print(#function)
+        let skipAction = UIAlertAction(title: "Да",
+                                       style: .destructive) { (action) in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+
+        let cancelAction = UIAlertAction(title: "Отмена",
+                  style: .cancel) { _ in }
+             
+        let alert = UIAlertController(title: "Сбросить игру?",
+                    message: "Вы хотите сбросить вашу игру и вернуться в главное меню?",
+                                      preferredStyle: .alert)
+        alert.addAction(skipAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+    }
+}
+
+extension GameViewController: GameViewModelProtocol {
+    func updateUI(seconds: Int) {
+        timerLabel.text = String(format: "00:%02d", seconds)
     }
 }
