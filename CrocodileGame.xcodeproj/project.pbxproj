@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2718CBCA29F0ACF7003942A4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */; };
 		27570B5929EDD351000C0808 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5829EDD351000C0808 /* BaseController.swift */; };
 		27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */; };
 		27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B5D29EE8CB8000C0808 /* alarm.mp3 */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		27570B5829EDD351000C0808 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		27570B5D29EE8CB8000C0808 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				27570B5829EDD351000C0808 /* BaseController.swift */,
 				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
 				27570B8429EF7318000C0808 /* Bundle+Extension.swift */,
+				2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				A12FDF5629EC583600B1E069 /* RulesViewController.swift in Sources */,
 				A12FDF5229EC574D00B1E069 /* WrongViewController.swift in Sources */,
 				27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */,
+				2718CBCA29F0ACF7003942A4 /* UserDefaults+Extension.swift in Sources */,
 				27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */,
 				A12FDF5029EC573600B1E069 /* CorrectViewController.swift in Sources */,
 				A12FDF4C29EC570000B1E069 /* CategoryViewController.swift in Sources */,
