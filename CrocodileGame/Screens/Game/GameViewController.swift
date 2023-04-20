@@ -29,9 +29,23 @@ class GameViewController: BaseController {
     }
     
     private func start() {
-        viewModel.startTimer()
-        titleLabel.text = brain.getTitle()
-        descriptionLabel.text = brain.getDescription()
+        let goAction = UIAlertAction(title: "Поехали",
+                                       style: .default) { _ in
+            self.viewModel.startTimer()
+            self.titleLabel.text = self.brain.getTitle()
+            self.descriptionLabel.text = self.brain.getDescription()
+        }
+
+        let finishAction = UIAlertAction(title: "Завершить",
+                  style: .destructive) { _ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+             
+        let alert = UIAlertController(title: nil,
+                                      message: "Приветствуем команду \(self.brain.getCurrentTeam().name)",
+                                      preferredStyle: .alert)
+        alert.addAction(goAction)
+        self.present(alert, animated: true)
     }
     
     private func stop() {
@@ -68,6 +82,7 @@ extension GameViewController {
     
     private func setupTimerLabel() {
         view.addSubview(timerLabel)
+        timerLabel.text = "01:00"
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         timerLabel.font = .italicSystemFont(ofSize: 48)
         NSLayoutConstraint.activate([
