@@ -166,7 +166,8 @@ class TeamViewController: UIViewController {
     
     @objc
     private func playersReadyButtonHandler() {
-        print("Нажали кнопку Игроки готовы")
+        let controller = CategoryViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }

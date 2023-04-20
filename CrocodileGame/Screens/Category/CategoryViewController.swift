@@ -184,7 +184,8 @@ class CategoryViewController: UIViewController {
     
     @objc
     private func playersReadyButtonHandler() {
-        print("Нажали кнопку Начать игру")
+        let controller = GameViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }
