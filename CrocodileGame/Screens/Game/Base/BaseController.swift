@@ -21,7 +21,9 @@ class BaseController: UIViewController {
     }
     func layoutViews() {}
     func configureAppearance() {}
-    func navBarLeftButtonHandler() {}
+    func navBarLeftButtonHandler() {
+        navigationController?.popViewController(animated: true)
+    }
     func navBarRightButtonHandler() {}
 }
 
@@ -42,6 +44,7 @@ extension BaseController {
         switch position {
         case .left:
             button.addTarget(self, action: #selector(navBarLeftButtonHandler), for: .primaryActionTriggered)
+            button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
         case .right:
             button.addTarget(self, action: #selector(navBarRightButtonHandler), for: .primaryActionTriggered)

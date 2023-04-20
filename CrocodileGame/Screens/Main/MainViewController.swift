@@ -30,7 +30,6 @@ class MainViewController: UIViewController {
     }
     
     @objc func rulesButtonHandler() {
-        print("pressed button")
         let controller = RulesViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -48,9 +47,8 @@ class MainViewController: UIViewController {
         ])
     }
     @objc func startButtonHandler() {
-        print("pressed button")
         UserDefaults.standard.topics = Topics.easy.rawValue
-        let controller = GameViewController()
+        let controller = TeamViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
 
