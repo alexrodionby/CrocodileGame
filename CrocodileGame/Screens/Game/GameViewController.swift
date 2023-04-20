@@ -1,9 +1,12 @@
 import UIKit
+import SwiftUI
 
 class GameViewController: BaseController {
-    private var brain = CrocodileBrain(words: Bundle.main.decode(
+    private var brain = CrocodileBrain(
+        words: Bundle.main.decode(
         WordsRespondse.self,
-        from: UserDefaults.standard.topics).words.shuffled())
+        from: UserDefaults.standard.topics).words.shuffled(),
+        teams: GameStore.shared.teams)
     private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
@@ -18,9 +21,7 @@ class GameViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.start()
-        }
+        start()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -135,22 +136,26 @@ extension GameViewController {
     
     @objc func rightButtonHandler() {
         stop()
-        let controller = CorrectViewController()
-        controller.view.backgroundColor = UIColor(named: "greenButton")
+        brain.correctAnswer()
+        let team = brain.getCurrentTeam()
+        let controller = UIHostingController(rootView: GameView(team: team, correct: true))
         navigationController?.pushViewController(controller, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             controller.navigationController?.popViewController(animated: true)
+            self.brain.nextTeam()
             self.start()
         }
     }
     
     @objc func wrongButtonHandler() {
         stop()
-        let controller = WrongViewController()
-        controller.view.backgroundColor = UIColor(named: "redButton")
+        let team = brain.getCurrentTeam()
+        let controller = UIHostingController(rootView: GameView(team: team, correct: false))
         navigationController?.pushViewController(controller, animated: true)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             controller.navigationController?.popViewController(animated: true)
+            self.brain.nextTeam()
             self.start()
         }
     }
