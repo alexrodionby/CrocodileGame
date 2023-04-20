@@ -6,9 +6,9 @@ final class GameStore {
     
     var teams = [Team(name: "Ковбои", image: "cowboy"),
                  Team(name: "Стройняшки", image: "burger")]
-    var topics = [Category(name: "Животные", image: "🐸"),
-                  Category(name: "Еда", image: "🍔"),
-                  Category(name: "Личности", image: "🤠"),
-                  Category(name: "Хобби", image: "💅")]
+    var categories = [Category(name: "Животные", image: "animal", color: "animalColor"),
+                  Category(name: "Еда", image: "burger", color: "foodColor"),
+                  Category(name: "Личности", image: "cowboy", color: "personColor"),
+                  Category(name: "Хобби", image: "hobby", color: "redButton")]
 }
 
