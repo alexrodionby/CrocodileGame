@@ -1,13 +1,9 @@
 import UIKit
 
 class TeamViewController: BaseController {
-    var teams = [Team(name: "Ковбои", image: "cowboy"),
-                 Team(name: "Стройняшки", image: "burger")]
+    var teams = GameStore.shared.teams
     
-    lazy var stack = UIStackView(arrangedSubviews: [
-        TeamView(team: teams[0]),
-        TeamView(team: teams[1])
-    ])
+    lazy var stack = UIStackView()
     
     let playersReadyButton = UIButton(type: .system)
     
@@ -43,6 +39,9 @@ class TeamViewController: BaseController {
     
     private func setupStack() {
         view.addSubview(stack)
+        teams.forEach {
+            stack.addArrangedSubview(TeamView(team: $0))
+        }
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.spacing = 28
         stack.axis = .vertical
