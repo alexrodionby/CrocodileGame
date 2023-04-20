@@ -8,12 +8,70 @@
 import UIKit
 
 class CategoryViewController: UIViewController {
-    let backgroundImageView = UIImageView(image: UIImage(named: "background"))
-    let titleLabel = UILabel()
-    let firstCategoryButton = UIButton()
-    let secondCategoryButton = UIButton()
-    let thirdCategoryButton = UIButton()
-    let fourthCategoryButton = UIButton()
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+    
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Кто играет?"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .boldSystemFont(ofSize: 34)
+        return label
+    }()
+    
+    private lazy var firstCategoryView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        return view
+    }()
+    
+    private lazy var firstComandNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Bhavuka", size: 22)
+        label.text = "Личности"
+        return label
+    }()
+    
+    private lazy var firstTeamCircleImageView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.bounds.size = CGSize(width: 56, height: 56)
+        view.layer.cornerRadius = view.frame.size.width / 2
+        view.backgroundColor = .systemPink.withAlphaComponent(0.5)
+        return view
+    }()
+    
+    private lazy var firstTeamEmogyLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "🤠"
+        label.font = .systemFont(ofSize: 40)
+        return label
+    }()
+    
+    private lazy var checkMark: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "checkmark.circle.fill")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    
+    
+    
     let startGameButton = UIButton(type: .system)
 
     override func viewDidLoad() {
@@ -22,10 +80,8 @@ class CategoryViewController: UIViewController {
         setupBackground()
         setupTitleLabel()
         setupBeginGameButton()
-        setupFirstCategoryButton()
-        setupSecondCategoryButton()
-        setupThirdCategoryButton()
-//        setupFourthCategoryButton()
+        setupFirstCategoryView()
+        
     }
     
     // Фон
@@ -68,72 +124,39 @@ class CategoryViewController: UIViewController {
     
     
     // Лейбл=кнопка "Первая категория"
-    private func setupFirstCategoryButton() {
-        view.addSubview(firstCategoryButton)
-        firstCategoryButton.translatesAutoresizingMaskIntoConstraints = false
-        firstCategoryButton.backgroundColor = .white
-        firstCategoryButton.layer.cornerRadius = 5
-        firstCategoryButton.setTitleColor(.black, for: .normal)
-        firstCategoryButton.setTitle("Личности", for: .normal)
-        let image = UIImage(named: "Icon1")
-        firstCategoryButton.setImage(image, for: .normal)
-        firstCategoryButton.addTarget(self, action: #selector(didSelectCommand), for: .primaryActionTriggered)
-        
+    private func setupFirstCategoryView() {
+        view.addSubview(firstCategoryView)
+        firstCategoryView.addSubview(firstComandNameLabel)
+        firstCategoryView.addSubview(firstTeamCircleImageView)
+        firstTeamCircleImageView.addSubview(firstTeamEmogyLabel)
+        firstCategoryView.addSubview(checkMark)
         
         let constraints: [NSLayoutConstraint] = [
-            firstCategoryButton.heightAnchor.constraint(equalToConstant: 96),
-            firstCategoryButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 36),
-            firstCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            firstCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            firstCategoryView.heightAnchor.constraint(equalToConstant: 96),
+            firstCategoryView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 36),
+            firstCategoryView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
+            firstCategoryView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            
+            firstComandNameLabel.centerXAnchor.constraint(equalTo: firstCategoryView.centerXAnchor),
+            firstComandNameLabel.centerYAnchor.constraint(equalTo: firstCategoryView.centerYAnchor),
+            
+            firstTeamCircleImageView.widthAnchor.constraint(equalToConstant: 56),
+            firstTeamCircleImageView.heightAnchor.constraint(equalToConstant: 56),
+            firstTeamCircleImageView.centerYAnchor.constraint(equalTo: firstCategoryView.centerYAnchor),
+            firstTeamCircleImageView.leadingAnchor.constraint(equalTo: firstCategoryView.leadingAnchor, constant: 17),
+            
+            firstTeamEmogyLabel.centerYAnchor.constraint(equalTo: firstTeamCircleImageView.centerYAnchor),
+            firstTeamEmogyLabel.centerXAnchor.constraint(equalTo: firstTeamCircleImageView.centerXAnchor),
+            
+            checkMark.widthAnchor.constraint(equalToConstant: 30),
+            checkMark.heightAnchor.constraint(equalToConstant: 30),
+            checkMark.centerYAnchor.constraint(equalTo: firstCategoryView.centerYAnchor),
+            checkMark.trailingAnchor.constraint(equalTo: firstCategoryView.trailingAnchor, constant: -20),
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func setupSecondCategoryButton() {
-        view.addSubview(secondCategoryButton)
-        secondCategoryButton.translatesAutoresizingMaskIntoConstraints = false
-        secondCategoryButton.backgroundColor = .white
-        secondCategoryButton.layer.cornerRadius = 5
-        secondCategoryButton.setTitleColor(.black, for: .normal)
-        secondCategoryButton.setTitle("Еда", for: .normal)
-        let image = UIImage(named: "Icon2")
-        secondCategoryButton.setImage(image, for: .normal)
-        secondCategoryButton.addTarget(self, action: #selector(didSelectCommand), for: .primaryActionTriggered)
-        
-        
-        let constraints: [NSLayoutConstraint] = [
-            secondCategoryButton.heightAnchor.constraint(equalToConstant: 96),
-            secondCategoryButton.topAnchor.constraint(equalTo: firstCategoryButton.bottomAnchor, constant: 25),
-            secondCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            secondCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    private func setupThirdCategoryButton() {
-        view.addSubview(thirdCategoryButton)
-        thirdCategoryButton.translatesAutoresizingMaskIntoConstraints = false
-        thirdCategoryButton.backgroundColor = .white
-        thirdCategoryButton.layer.cornerRadius = 5
-        thirdCategoryButton.setTitleColor(.black, for: .normal)
-        thirdCategoryButton.setTitle("Хобби", for: .normal)
-        let image = UIImage(named: "Icon3")
-        thirdCategoryButton.setImage(image, for: .normal)
-        thirdCategoryButton.addTarget(self, action: #selector(didSelectCommand), for: .primaryActionTriggered)
-        
-        
-        let constraints: [NSLayoutConstraint] = [
-            thirdCategoryButton.heightAnchor.constraint(equalToConstant: 96),
-            thirdCategoryButton.topAnchor.constraint(equalTo: secondCategoryButton.bottomAnchor, constant: 25),
-            thirdCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            thirdCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-    
+   
     
     
     
