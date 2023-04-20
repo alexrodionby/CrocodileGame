@@ -1,14 +1,6 @@
 import Foundation
 
-enum Topics: String {
-    case easy = "EasyWords.json"
-    case hardcore = "Hardcore.json"
-    case newyear = "NewYear.json"
-    case normal = "Normal.json"
-    case phraseological = "Phraselogical.json"
-    case summer = "Summer.json"
-    case quick = "QuickGame.json"
-}
+
 
 struct WordsRespondse: Codable {
     let words: [String]
@@ -16,6 +8,8 @@ struct WordsRespondse: Codable {
 
 struct CrocodileBrain {
     var words: [String]
+    var score = 0
+    
     mutating func getTitle() -> String {
         let result = words.isEmpty ? "Конец игры" : words.removeFirst()
         return result
@@ -32,5 +26,9 @@ struct CrocodileBrain {
             "Объясняй сексуально."
         ]
         return results.randomElement() ?? results[0]
+    }
+    
+    mutating func correctAnswer() {
+        score += 1
     }
 }

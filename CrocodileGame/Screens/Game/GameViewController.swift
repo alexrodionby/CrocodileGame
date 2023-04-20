@@ -18,9 +18,7 @@ class GameViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.start()
-        }
+        start()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

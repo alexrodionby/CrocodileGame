@@ -35,10 +35,10 @@ final class GameViewModel {
     @objc func updateTimer() {
         if currentTime > 0 {
             currentTime -= 1
+            delegate?.updateUI(seconds: currentTime)
         } else {
             timer?.invalidate()
             playSound()
         }
-        delegate?.updateUI(seconds: currentTime)
     }
 }
