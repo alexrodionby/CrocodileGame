@@ -2,18 +2,14 @@ import UIKit
 
 class CategoryViewController: BaseController {
     var categories = GameStore.shared.categories
-    
     lazy var stack = UIStackView()
-    
-    let startGameButton = UIButton(type: .system)
 
     override func setupViews() {
         super.setupViews()
-        setupBeginGameButton()
+        setupGreenButton("Начать игру")
         setupStack()
         title = "Категории"
-        addNavBarButton(at: .left, with: "Назад")
-
+        addNavBarButton(at: .left, with: "")
     }
     
     private func setupStack() {
@@ -34,32 +30,13 @@ class CategoryViewController: BaseController {
         ])
     }
     
-    // Кнопка "Начать игру"
-    private func setupBeginGameButton() {
-        view.addSubview(startGameButton)
-        startGameButton.translatesAutoresizingMaskIntoConstraints = false
-        startGameButton.configure(with: .green, title: "Начать игру", height: 63)
-        startGameButton.addTarget(self, action: #selector(playersReadyButtonHandler), for: .primaryActionTriggered)
-        
-        let playersReadyButtonConstraints: [NSLayoutConstraint] = [
-            startGameButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -62),
-            startGameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
-            startGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14)
-        ]
-        
-        NSLayoutConstraint.activate(playersReadyButtonConstraints)
-    }
-    
     @objc
     private func didSelectCommand() {
         print("Выбрали команду")
     }
     
-    
-    @objc
-    private func playersReadyButtonHandler() {
+    override func greenButtonHandler() {
         let controller = GameViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
