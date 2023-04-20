@@ -63,7 +63,7 @@ class CategoryViewController: UIViewController {
     
     private lazy var checkMark: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "checkmark.circle.fill")
+        imageView.image = UIImage(systemName: "checkmark.circle.fill")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -126,6 +126,8 @@ class CategoryViewController: UIViewController {
     // Лейбл=кнопка "Первая категория"
     private func setupFirstCategoryView() {
         view.addSubview(firstCategoryView)
+    
+        firstCategoryView.backgroundColor = .lightGray
         firstCategoryView.addSubview(firstComandNameLabel)
         firstCategoryView.addSubview(firstTeamCircleImageView)
         firstTeamCircleImageView.addSubview(firstTeamEmogyLabel)

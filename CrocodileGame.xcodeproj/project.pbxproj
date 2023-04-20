@@ -13,6 +13,7 @@
 		2718CBD329F0C0DF003942A4 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBD229F0C0DF003942A4 /* Team.swift */; };
 		2718CBD529F0C227003942A4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBD429F0C227003942A4 /* Category.swift */; };
 		2738A06129F0D6CD007410C6 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738A06029F0D6CD007410C6 /* GameView.swift */; };
+		2739343C29F1C74500FC7204 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2739343B29F1C74500FC7204 /* TeamView.swift */; };
 		27570B5929EDD351000C0808 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5829EDD351000C0808 /* BaseController.swift */; };
 		27570B5B29EDDD88000C0808 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */; };
 		27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27570B5D29EE8CB8000C0808 /* alarm.mp3 */; };
@@ -57,6 +58,7 @@
 		2718CBD229F0C0DF003942A4 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		2718CBD429F0C227003942A4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2738A06029F0D6CD007410C6 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		2739343B29F1C74500FC7204 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		27570B5829EDD351000C0808 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		27570B5D29EE8CB8000C0808 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				A12FDF4929EC56E900B1E069 /* TeamViewController.swift */,
+				2739343B29F1C74500FC7204 /* TeamView.swift */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				2718CBCF29F0C088003942A4 /* Topics.swift in Sources */,
 				A12FDF4829EC567000B1E069 /* MainViewController.swift in Sources */,
 				A12FDF4A29EC56E900B1E069 /* TeamViewController.swift in Sources */,
+				2739343C29F1C74500FC7204 /* TeamView.swift in Sources */,
 				A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */,
 				A12FDF4E29EC571D00B1E069 /* GameViewController.swift in Sources */,
 				A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */,
