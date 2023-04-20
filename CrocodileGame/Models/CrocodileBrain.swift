@@ -8,7 +8,8 @@ struct WordsRespondse: Codable {
 
 struct CrocodileBrain {
     var words: [String]
-    var score = 0
+    var teams: [Team]
+    var currentTeam = 0
     
     mutating func getTitle() -> String {
         let result = words.isEmpty ? "Конец игры" : words.removeFirst()
@@ -28,7 +29,16 @@ struct CrocodileBrain {
         return results.randomElement() ?? results[0]
     }
     
+    func getCurrentTeam() -> Team {
+        teams[currentTeam]
+    }
+    
     mutating func correctAnswer() {
-        score += 1
+        teams[currentTeam].score += 1
+    }
+    
+    mutating func nextTeam() {
+        currentTeam += 1
+        if currentTeam == teams.count { currentTeam = 0 }
     }
 }
