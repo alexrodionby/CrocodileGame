@@ -3,9 +3,9 @@ import SwiftUI
 
 class GameViewController: BaseController {
     private var brain = CrocodileBrain(
-        words: Bundle.main.decode(
-        WordsRespondse.self,
-        from: UserDefaults.standard.topics).words.shuffled(),
+        words:  Bundle.main.decode(
+            WordsRespondse.self,
+            from: UserDefaults.standard.topics).words.shuffled(),
         teams: GameStore.shared.teams)
     private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
@@ -29,16 +29,16 @@ class GameViewController: BaseController {
     }
     
     private func start() {
+        guard !brain.gameOver else {
+            let controller = ResultAllViewController()
+            navigationController?.pushViewController(controller, animated: true)
+            return
+        }
         let goAction = UIAlertAction(title: "Поехали",
                                        style: .default) { _ in
             self.viewModel.startTimer()
             self.titleLabel.text = self.brain.getTitle()
             self.descriptionLabel.text = self.brain.getDescription()
-        }
-
-        let finishAction = UIAlertAction(title: "Завершить",
-                  style: .destructive) { _ in
-            self.navigationController?.popToRootViewController(animated: true)
         }
              
         let alert = UIAlertController(title: nil,

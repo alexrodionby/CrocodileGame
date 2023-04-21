@@ -2,39 +2,14 @@ import UIKit
 
 class TeamViewController: BaseController {
     var teams = GameStore.shared.teams
-    
     lazy var stack = UIStackView()
-    
-    let playersReadyButton = UIButton(type: .system)
     
     override func setupViews() {
         super.setupViews()
-        setupPlayersReadyButton()
+        setupGreenButton("Игроки готовы")
         setupStack()
         title = "Кто играет?"
-        addNavBarButton(at: .left, with: "Назад")
-    }
-
-    // Кнопка "Игроки готовы"
-    private func setupPlayersReadyButton() {
-        view.addSubview(playersReadyButton)
-        playersReadyButton.translatesAutoresizingMaskIntoConstraints = false
-        playersReadyButton.configure(with: .green,
-                                     title: "Игроки готовы",
-                                     height: 63)
-        playersReadyButton.addTarget(self, action: #selector(playersReadyButtonHandler),
-                                     for: .primaryActionTriggered)
-        
-        let playersReadyButtonConstraints: [NSLayoutConstraint] = [
-            playersReadyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                       constant: -62),
-            playersReadyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                        constant: 14),
-            playersReadyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                         constant: -14)
-        ]
-        
-        NSLayoutConstraint.activate(playersReadyButtonConstraints)
+        addNavBarButton(at: .left, with: "")
     }
     
     private func setupStack() {
@@ -55,10 +30,8 @@ class TeamViewController: BaseController {
         ])
     }
     
-    @objc
-    private func playersReadyButtonHandler() {
+    override func greenButtonHandler() {
         let controller = CategoryViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
