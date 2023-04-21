@@ -4,6 +4,9 @@ final class TeamView: UIView {
     let team: Team
     let imageView = UIImageView()
     let titleLabel = UILabel()
+    let scoreLabel = UILabel()
+    let scoreTitle = UILabel()
+
     let scoreStack = UIStackView()
     
     init(team: Team) {
@@ -16,6 +19,9 @@ final class TeamView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(with team: Team) {
+        scoreLabel.text = "\(team.score)"
+    }
     func configure(with color: UIColor) {
         backgroundColor = color
     }
@@ -57,11 +63,9 @@ extension TeamView {
     private func setupScoreLabel() {
         addSubview(scoreStack)
         scoreStack.translatesAutoresizingMaskIntoConstraints = false
-        let scoreLabel = UILabel()
         scoreStack.addArrangedSubview(scoreLabel)
         scoreLabel.text = "\(team.score)"
         scoreLabel.font = .italicSystemFont(ofSize: 50)
-        let scoreTitle = UILabel()
         scoreStack.addArrangedSubview(scoreTitle)
         scoreTitle.text = "Очки"
         scoreStack.axis = .vertical
