@@ -2,7 +2,6 @@ import UIKit
 
 class CategoryViewController: BaseController {
     var categories = GameStore.shared.categories
-    lazy var stack = UIStackView()
     let tableView = UITableView()
     var selectedRow: Int? = nil
     
@@ -11,7 +10,7 @@ class CategoryViewController: BaseController {
         setupGreenButton("Начать игру")
         setupTableView()
         title = "Категории"
-        addNavBarButton(at: .left, with: "")
+        addNavBarButton(at: .left)
     }
     
     private func setupTableView() {
@@ -28,28 +27,6 @@ class CategoryViewController: BaseController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: greenButton.topAnchor, constant: -80)
         ])
-    }
-    private func setupStack() {
-        view.addSubview(stack)
-        categories.forEach {
-            stack.addArrangedSubview(CategoryView(category: $0))
-        }
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.spacing = 28
-        stack.axis = .vertical
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
-                                       multiplier: 1),
-            stack.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor,
-                                           multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor,
-                                           multiplier: 2)
-        ])
-    }
-    
-    @objc
-    private func didSelectCommand() {
-        print("Выбрали команду")
     }
     
     override func greenButtonHandler() {

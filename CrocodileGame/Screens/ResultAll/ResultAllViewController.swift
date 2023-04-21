@@ -7,7 +7,6 @@ class ResultAllViewController: BaseController {
         title = "Результаты"
     }
     override func greenButtonHandler() {
-        let controller = CategoryViewController()
         navigationController?.popToRootViewController(animated: true)
     }
 }

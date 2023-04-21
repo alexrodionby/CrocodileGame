@@ -41,7 +41,7 @@ extension BaseController {
         ])
     }
     
-    func addNavBarButton(at position: NavBarPosition, with title: String) {
+    func addNavBarButton(at position: NavBarPosition, with title: String = "") {
         let button = UIButton(type: .system)
         
         switch position {
