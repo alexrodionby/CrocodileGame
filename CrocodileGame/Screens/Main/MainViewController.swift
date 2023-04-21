@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
             resultsButton.topAnchor.constraint(equalTo: rulesButton.bottomAnchor, constant: 18),
             resultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             resultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            resultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -88)
+            resultsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -88)
         ])
     }
     
