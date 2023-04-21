@@ -1,20 +1,29 @@
-//
-//  CategoryView.swift
-//  CrocodileGame
-//
-//  Created by Vladimir on 21.04.2023.
-//
-
-import Foundation
-
 import UIKit
+
+final class CategoryCell: UITableViewCell {
+    static let id = "CategoryCell"
+    let categoryView = CategoryView()
+    func configure(with category: Category, selected: Bool = false) {
+        backgroundColor = .clear
+        contentView.addSubview(categoryView)
+        categoryView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            categoryView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            categoryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            categoryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            categoryView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+        categoryView.configure(with: category, selected: selected)
+    }
+    
+}
 
 final class CategoryView: UIView {
     let category: Category
     let imageView = UIImageView()
     let titleLabel = UILabel()
-    
-    init(category: Category) {
+    let selectedImage = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
+    init(category: Category = Category(name: "", image: "", color: "")) {
         self.category = category
         super.init(frame: .zero)
         setupViews()
@@ -24,6 +33,12 @@ final class CategoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(with category: Category, selected: Bool = false) {
+        imageView.image = UIImage(named: category.image)
+        titleLabel.text = category.name
+        backgroundColor = UIColor(named: category.color)
+        selectedImage.isHidden = !selected
+    }
     func configure(with color: UIColor) {
         backgroundColor = color
     }
@@ -37,6 +52,7 @@ extension CategoryView {
         layer.cornerRadius = 10
         setupImageView()
         setupTitleLabel()
+        setupSelectedImage()
     }
     
     private func setupTitleLabel() {
@@ -59,6 +75,18 @@ extension CategoryView {
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 56),
             imageView.heightAnchor.constraint(equalToConstant: 56)
+        ])
+    }
+    
+    private func setupSelectedImage() {
+        addSubview(selectedImage)
+        selectedImage.translatesAutoresizingMaskIntoConstraints = false
+        selectedImage.tintColor = .white
+        NSLayoutConstraint.activate([
+            selectedImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            selectedImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            selectedImage.widthAnchor.constraint(equalToConstant: 30),
+            selectedImage.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
 }
