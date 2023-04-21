@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     private func setupResultsButton() {
         view.addSubview(resultsButton)
         resultsButton.translatesAutoresizingMaskIntoConstraints = false
-        resultsButton.configure(with: .green, title: "Результаты", height: 63)
+        resultsButton.configure(with: .orange, title: "Результаты", height: 63)
         resultsButton.addTarget(self, action: #selector(resultButtonHandler), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
