@@ -2,9 +2,18 @@ import UIKit
 
 class TeamViewController: BaseController {
     let model = TeamModel()
-    var teams = GameStore.shared.teams
+    let teams: [Team]
     lazy var stack = UIStackView()
+
+    init(numberOfTeam: Int) {
+        teams = model.randomTeams(count: numberOfTeam)
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+        
     override func setupViews() {
         super.setupViews()
         setupGreenButton("Игроки готовы")

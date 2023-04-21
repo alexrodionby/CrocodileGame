@@ -1,7 +1,8 @@
 import Foundation
 
 struct TeamModel {
-    let allTeams = [
+    let allImages = ["animal", "burger", "cowboy", "hobby"]
+    let allNames = [
         "Шарик в кеглю",
         "Волшебные Волшебники",
         "Спецотряд \"Ромашка\"",
@@ -70,8 +71,16 @@ struct TeamModel {
         "Прозрачные гонщики",
         "Загугленное поколение"
         ]
-    func randomTeams() -> [Team] {
-        [Team(name: "Ковбои", image: "cowboy"),
-         Team(name: "Стройняшки", image: "burger")]
+    func randomTeams(count: Int) -> [Team] {
+        var names = allNames
+        var images = allImages
+        guard count < allNames.count, count < allImages.count else { return [] }
+        var result: [Team] = []
+        for _ in 0..<count {
+            let name = names.remove(at: Int.random(in: 0..<names.count))
+            let image = images.remove(at: Int.random(in: 0..<images.count))
+            result.append(Team(name: name, image: image))
+        }
+        return result
     }
 }
