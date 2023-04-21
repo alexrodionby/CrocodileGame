@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
             resultsButton.topAnchor.constraint(equalTo: rulesButton.bottomAnchor, constant: 18),
             resultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             resultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            resultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+            resultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -88)
         ])
     }
     
@@ -90,10 +90,9 @@ class MainViewController: UIViewController {
         crocodileImageView.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
             crocodileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            crocodileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 54),
-            crocodileImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53),
-            crocodileImageView.widthAnchor.constraint(equalToConstant: 268),
-            crocodileImageView.heightAnchor.constraint(equalToConstant: 322)
+            crocodileImageView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+              crocodileImageView.widthAnchor.constraint(equalToConstant: 268),
+              crocodileImageView.heightAnchor.constraint(equalToConstant: 322)
         ])
         
         view.addSubview(leftGrassImageView)
