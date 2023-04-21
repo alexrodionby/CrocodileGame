@@ -4,6 +4,7 @@ final class TeamView: UIView {
     let team: Team
     let imageView = UIImageView()
     let titleLabel = UILabel()
+    let scoreStack = UIStackView()
     
     init(team: Team) {
         self.team = team
@@ -28,6 +29,7 @@ extension TeamView {
         layer.cornerRadius = 10
         setupImageView()
         setupTitleLabel()
+        setupScoreLabel()
     }
     
     private func setupTitleLabel() {
@@ -49,6 +51,24 @@ extension TeamView {
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 56),
             imageView.heightAnchor.constraint(equalToConstant: 56)
+        ])
+    }
+    
+    private func setupScoreLabel() {
+        addSubview(scoreStack)
+        scoreStack.translatesAutoresizingMaskIntoConstraints = false
+        let scoreLabel = UILabel()
+        scoreStack.addArrangedSubview(scoreLabel)
+        scoreLabel.text = "\(team.score)"
+        scoreLabel.font = .italicSystemFont(ofSize: 50)
+        let scoreTitle = UILabel()
+        scoreStack.addArrangedSubview(scoreTitle)
+        scoreTitle.text = "Очки"
+        scoreStack.axis = .vertical
+        scoreStack.isHidden = team.score == 0
+        NSLayoutConstraint.activate([
+            scoreStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            scoreStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
     }
 }
