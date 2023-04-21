@@ -2,11 +2,8 @@ import UIKit
 import SwiftUI
 
 class GameViewController: BaseController {
-    private var brain = CrocodileBrain(
-        words:  Bundle.main.decode(
-            WordsRespondse.self,
-            from: UserDefaults.standard.topics).words.shuffled(),
-        teams: GameStore.shared.teams)
+    private var brain: CrocodileBrain
+    
     private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
@@ -18,6 +15,15 @@ class GameViewController: BaseController {
     private let skipButton = UIButton(type: .system)
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
+    
+    init(brain: CrocodileBrain) {
+            self.brain = brain
+        super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

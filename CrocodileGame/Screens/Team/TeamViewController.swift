@@ -31,7 +31,7 @@ class TeamViewController: BaseController {
     }
     
     override func greenButtonHandler() {
-        let controller = CategoryViewController()
+        let controller = CategoryViewController(teams: teams)
         navigationController?.pushViewController(controller, animated: true)
     }
 }

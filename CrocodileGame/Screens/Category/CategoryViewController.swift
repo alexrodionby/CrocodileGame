@@ -1,9 +1,19 @@
 import UIKit
 
 class CategoryViewController: BaseController {
+    let teams: [Team]
     var categories = GameStore.shared.categories
     let tableView = UITableView()
     var selectedRow: Int? = nil
+    
+    init(teams: [Team]) {
+        self.teams = teams
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func setupViews() {
         super.setupViews()
@@ -30,7 +40,9 @@ class CategoryViewController: BaseController {
     }
     
     override func greenButtonHandler() {
-        let controller = GameViewController()
+        let words = ["боль в животе", "борозда", "ботинки", "браг"]
+        let brain = CrocodileBrain(words: words, teams: teams)
+        let controller = GameViewController(brain: brain)
         navigationController?.pushViewController(controller, animated: true)
     }
 }
