@@ -4,6 +4,7 @@ public enum CrocodileButtonType {
     case green
     case red
     case gray
+    case orange
 }
 
 extension UIButton {
@@ -21,6 +22,8 @@ extension UIButton {
             backgroundColor = UIColor(named: "redButton")
         case .gray:
             backgroundColor = UIColor(named: "grayButton")
+        case .orange:
+            backgroundColor = UIColor(named: "orangeButton")
         }
     }
 }
