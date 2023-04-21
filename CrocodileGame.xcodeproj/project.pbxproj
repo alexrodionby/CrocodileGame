@@ -36,6 +36,7 @@
 		27570B8229EF72CF000C0808 /* lastSeconds.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7C29EF72CF000C0808 /* lastSeconds.wav */; };
 		27570B8329EF72CF000C0808 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7D29EF72CF000C0808 /* right.wav */; };
 		27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B8429EF7318000C0808 /* Bundle+Extension.swift */; };
+		27FBF7B229F2D06800846001 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B129F2D06800846001 /* TeamModel.swift */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 		27570B7C29EF72CF000C0808 /* lastSeconds.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lastSeconds.wav; sourceTree = "<group>"; };
 		27570B7D29EF72CF000C0808 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right.wav; sourceTree = "<group>"; };
 		27570B8429EF7318000C0808 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		27FBF7B129F2D06800846001 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +116,8 @@
 		2718CBCB29F0C026003942A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2718CBCE29F0C088003942A4 /* Topics.swift */,
 				2718CBD229F0C0DF003942A4 /* Team.swift */,
+				2718CBCE29F0C088003942A4 /* Topics.swift */,
 				2718CBD429F0C227003942A4 /* Category.swift */,
 			);
 			path = Models;
@@ -256,6 +258,7 @@
 		A12FDF5B29EC58FB00B1E069 /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				27FBF7B129F2D06800846001 /* TeamModel.swift */,
 				A12FDF4929EC56E900B1E069 /* TeamViewController.swift */,
 				2739343B29F1C74500FC7204 /* TeamView.swift */,
 			);
@@ -434,6 +437,7 @@
 				2739343E29F1D5FB00FC7204 /* CategoryView.swift in Sources */,
 				A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */,
 				A12FDF4E29EC571D00B1E069 /* GameViewController.swift in Sources */,
+				27FBF7B229F2D06800846001 /* TeamModel.swift in Sources */,
 				A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */,
 				2738A06129F0D6CD007410C6 /* GameView.swift in Sources */,
 				2718CBD129F0C0A8003942A4 /* GameStore.swift in Sources */,

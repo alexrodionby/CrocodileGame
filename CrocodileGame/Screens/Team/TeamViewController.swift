@@ -1,6 +1,7 @@
 import UIKit
 
 class TeamViewController: BaseController {
+    let model = TeamModel()
     var teams = GameStore.shared.teams
     lazy var stack = UIStackView()
     

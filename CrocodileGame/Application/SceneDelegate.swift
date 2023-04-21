@@ -14,7 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let navigationController = UINavigationController(rootViewController: GameResultViewController())
+//        var team = Team(name: "Ковбои", image: "cowboy", score: 2)
+//        let controller = CorrectViewController(team: team)
+//        team.score = 7
+//        controller.configure(with: team, answer: true)
+//        let navigationController = UINavigationController(rootViewController: controller)
         let navigationController = UINavigationController(rootViewController: MainViewController())
         navigationController.navigationBar.tintColor = .black
         window?.rootViewController = navigationController
