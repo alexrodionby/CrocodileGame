@@ -14,43 +14,60 @@ class MainViewController: UIViewController {
     let rightGrassImageView = UIImageView(image: UIImage(named: "grass"))
     let startButton = UIButton(type: .system)
     let rulesButton = UIButton(type: .system)
+    let resultsButton = UIButton(type: .system)
     
-    private func setapRulesButton() {
+    private func setupRulesButton() {
         view.addSubview(rulesButton)
         rulesButton.translatesAutoresizingMaskIntoConstraints = false
         rulesButton.configure(with: .green, title: "Правила", height: 63)
         rulesButton.addTarget(self, action: #selector(rulesButtonHandler), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
-            rulesButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 39),
+            rulesButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 23),
             rulesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             rulesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            rulesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
     }
     
     @objc func rulesButtonHandler() {
-        print("pressed button")
         let controller = RulesViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    private func setupResultsButton() {
+        view.addSubview(resultsButton)
+        resultsButton.translatesAutoresizingMaskIntoConstraints = false
+        resultsButton.configure(with: .green, title: "Результаты", height: 63)
+        resultsButton.addTarget(self, action: #selector(resultButtonHandler), for: .primaryActionTriggered)
+        
+        NSLayoutConstraint.activate([
+            resultsButton.topAnchor.constraint(equalTo: rulesButton.bottomAnchor, constant: 18),
+            resultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
+            resultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
+            resultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
+        ])
+    }
+    
+    @objc func resultButtonHandler() {
+        let controller = GameResultViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
-    private func setapStartButton() {
+    private func setupStartButton() {
         view.addSubview(startButton)
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.configure(with: .green, title: "Старт игры", height: 83)
         startButton.addTarget(self, action: #selector(startButtonHandler), for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: crocodileImageView.bottomAnchor, constant: 48),
+            startButton.topAnchor.constraint(equalTo: crocodileImageView.bottomAnchor, constant: 40),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -51)
         ])
     }
     @objc func startButtonHandler() {
-        print("pressed button")
         UserDefaults.standard.topics = Topics.easy.rawValue
-        let controller = GameViewController()
+        let controller = TeamViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -73,7 +90,6 @@ class MainViewController: UIViewController {
         crocodileImageView.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
             crocodileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-           // crocodileImageView.bottomAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 172),
             crocodileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 54),
             crocodileImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53),
             crocodileImageView.widthAnchor.constraint(equalToConstant: 268),
@@ -100,8 +116,9 @@ class MainViewController: UIViewController {
             rightGrassImageView.heightAnchor.constraint(equalToConstant: 70)
         ])
         
-        setapStartButton()
-        setapRulesButton()
+        setupStartButton()
+        setupRulesButton()
+        setupResultsButton()
         
     }
     

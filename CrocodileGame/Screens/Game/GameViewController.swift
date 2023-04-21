@@ -2,11 +2,8 @@ import UIKit
 import SwiftUI
 
 class GameViewController: BaseController {
-    private var brain = CrocodileBrain(
-        words: Bundle.main.decode(
-        WordsRespondse.self,
-        from: UserDefaults.standard.topics).words.shuffled(),
-        teams: GameStore.shared.teams)
+    private var brain: CrocodileBrain
+    
     private let viewModel = GameViewModel()
     private let logoImageView = UIImageView(image: UIImage(named: "logo"))
     private let timerLabel = UILabel()
@@ -19,6 +16,15 @@ class GameViewController: BaseController {
     private lazy var buttonStack = UIStackView(
         arrangedSubviews: [rightButton, wrongButton, skipButton])
     
+    init(brain: CrocodileBrain) {
+            self.brain = brain
+        super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
@@ -29,16 +35,16 @@ class GameViewController: BaseController {
     }
     
     private func start() {
+        guard !brain.gameOver else {
+            let controller = ResultAllViewController()
+            navigationController?.pushViewController(controller, animated: true)
+            return
+        }
         let goAction = UIAlertAction(title: "Поехали",
                                        style: .default) { _ in
             self.viewModel.startTimer()
             self.titleLabel.text = self.brain.getTitle()
             self.descriptionLabel.text = self.brain.getDescription()
-        }
-
-        let finishAction = UIAlertAction(title: "Завершить",
-                  style: .destructive) { _ in
-            self.navigationController?.popToRootViewController(animated: true)
         }
              
         let alert = UIAlertController(title: nil,
@@ -53,7 +59,51 @@ class GameViewController: BaseController {
         descriptionLabel.text = ""
         viewModel.stopTimer()
     }
+    
+    @objc func rightButtonHandler() {
+        stop()
+        brain.correctAnswer()
+        let team = brain.getCurrentTeam()
+        let controller = UIHostingController(rootView: GameView(team: team, correct: true))
+        navigationController?.pushViewController(controller, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            controller.navigationController?.popViewController(animated: true)
+            self.brain.nextTeam()
+            self.start()
+        }
+    }
+    
+    @objc func wrongButtonHandler() {
+        stop()
+        let team = brain.getCurrentTeam()
+        let controller = UIHostingController(rootView: GameView(team: team, correct: false))
+        navigationController?.pushViewController(controller, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            controller.navigationController?.popViewController(animated: true)
+            self.brain.nextTeam()
+            self.start()
+        }
+    }
+    
+    @objc func skipButtonHandler() {
+        let skipAction = UIAlertAction(title: "Да",
+                                       style: .destructive) { (action) in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+
+        let cancelAction = UIAlertAction(title: "Отмена",
+                  style: .cancel) { _ in }
+             
+        let alert = UIAlertController(title: "Сбросить игру?",
+                    message: "Вы хотите сбросить вашу игру и вернуться в главное меню?",
+                                      preferredStyle: .alert)
+        alert.addAction(skipAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
+    }
 }
+
 // MARK: Setup
 extension GameViewController {
     override func setupViews() {
@@ -147,49 +197,6 @@ extension GameViewController {
             view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow:
                                                                 buttonStack.bottomAnchor, multiplier: 1)
         ])
-    }
-    
-    @objc func rightButtonHandler() {
-        stop()
-        brain.correctAnswer()
-        let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: true))
-        navigationController?.pushViewController(controller, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
-    }
-    
-    @objc func wrongButtonHandler() {
-        stop()
-        let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: false))
-        navigationController?.pushViewController(controller, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
-    }
-    
-    @objc func skipButtonHandler() {
-        let skipAction = UIAlertAction(title: "Да",
-                                       style: .destructive) { (action) in
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-
-        let cancelAction = UIAlertAction(title: "Отмена",
-                  style: .cancel) { _ in }
-             
-        let alert = UIAlertController(title: "Сбросить игру?",
-                    message: "Вы хотите сбросить вашу игру и вернуться в главное меню?",
-                                      preferredStyle: .alert)
-        alert.addAction(skipAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true)
     }
 }
 

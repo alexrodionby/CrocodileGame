@@ -1,29 +1,91 @@
-//
-//  CorrectViewController.swift
-//  CrocodileGame
-//
-//  Created by Alexandr Rodionov on 16.04.23.
-//
-
 import UIKit
 
-class CorrectViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class CorrectViewController: BaseController {
+    let team: Team
+    lazy var teamView = TeamView(team: team)
+    let resultView = UIView()
+    let starView = UIImageView(image: UIImage (named: "starImage"))
+    let scoreView = UIImageView(image: UIImage (named: "scoreZero"))
+    let congratulationLabel = UILabel()
+    let scoreText = UILabel()
+    let youGet = UILabel()
+    let nextStep = UILabel()
+    
+    init(team: Team = Team(name: "Ковбои", image: "cowboy")) {
+        self.team = team
+        super.init(nibName: nil, bundle: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
+    
+    override func setupViews() {
+        
+        super.setupViews()
+        setupTeamVeiw()
+        setupResulView()
+        setupNextStep()
+        setupGreenButton("Передать ход")
+    }
+    
+    func configure(with team: Team, answer: Bool, next: String = "Стройняшки") {
+        nextStep.text = "Следующий ход - \(next)"
+        teamView.configure(with: team)
+        if answer {
+            configureCorrectAnswer()
+        } else {
+            configureWrongAnswer()
+        }
+    }
+    
+    override func greenButtonHandler() {
+        print(#function)
+    }
+    
+    func configureCorrectAnswer() {
+        resultView.backgroundColor = UIColor(named: "greenButton")
+    }
+    
+    func configureWrongAnswer() {
+        resultView.backgroundColor = UIColor(named: "redButton")
+    }
+    
+    func setupTeamVeiw() {
+        view.addSubview(teamView)
+        teamView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            teamView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            teamView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            teamView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
+        ])
+    }
+    
+}
 
+extension CorrectViewController {
+    func setupResulView() {
+        view.addSubview(resultView)
+        resultView.translatesAutoresizingMaskIntoConstraints = false
+        resultView.layer.cornerRadius = 20
+        NSLayoutConstraint.activate([
+            resultView.topAnchor.constraint(equalTo: teamView.bottomAnchor, constant: 86),
+            resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            resultView.heightAnchor.constraint(equalToConstant: 300),
+        ])
+    }
+    
+    func setupNextStep() {
+        resultView.addSubview(nextStep)
+        nextStep.translatesAutoresizingMaskIntoConstraints = false
+        nextStep.textAlignment = .center
+        NSLayoutConstraint.activate([
+            nextStep.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -46),
+            nextStep.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 16),
+            nextStep.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    
 }
