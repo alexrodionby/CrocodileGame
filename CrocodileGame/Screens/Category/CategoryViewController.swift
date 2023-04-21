@@ -67,7 +67,6 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.id, for: indexPath) as? CategoryCell
         else { return UITableViewCell()}
         let category = categories[indexPath.row]
-        print(selectedRow == indexPath.row, indexPath.row)
         cell.configure(with: category, selected: selectedRow == indexPath.row)
         return cell
     }

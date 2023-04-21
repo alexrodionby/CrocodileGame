@@ -23,7 +23,7 @@ final class CategoryView: UIView {
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let selectedImage = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-    init(category: Category = Category(name: "", image: "", color: "")) {
+    init(category: Category = Category(name: "Животные", image: "animal", color: "animalColor")) {
         self.category = category
         super.init(frame: .zero)
         setupViews()
