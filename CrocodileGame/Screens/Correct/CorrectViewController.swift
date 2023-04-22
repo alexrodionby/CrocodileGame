@@ -8,11 +8,18 @@ class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
     let resultView = UIView()
-    let scoreImage = UIImageView()
+    //Correct labels
+    let starView = UIImageView(image: UIImage (named: "star"))
+    let scoreView = UIImageView(image: UIImage (named: "score"))
     let congratulationLabel = UILabel()
     let scoreText = UILabel()
     let youGet = UILabel()
     let nextStep = UILabel()
+    //Incorrect labels
+    let circleView = UIImageView(image: UIImage (named: "circle"))
+    let scoreZeroView = UIImageView(image: UIImage (named: "zero"))
+    let youDontGetScoreLabel = UILabel()
+    let sadCongratsLabel = UILabel()
     weak var delegate: CorrectAnswerProtocol?
     
     init(team: Team = Team(name: "Ковбои", image: "cowboy")) {
@@ -30,7 +37,6 @@ class CorrectViewController: BaseController {
         setupTeamVeiw()
         setupResulView()
         setupNextStep()
-        setupScoreImage()
         setupGreenButton("Передать ход")
     }
     
@@ -38,9 +44,20 @@ class CorrectViewController: BaseController {
         nextStep.text = "Следующий ход - \(next)"
         teamView.configure(with: team)
         if answer {
+            setupResulView()
             configureCorrectAnswer()
+            setupNextStep()
+            setupStarAndScoreView()
+            youGetLabelView ()
+            congratulationView ()
         } else {
+            setupResulView()
+            setupNextStep()
             configureWrongAnswer()
+            setupNextStep()
+            setupZeroAndScoreView()
+            youDontGetTheScore()
+            sadCongrats()
         }
     }
     
@@ -51,12 +68,10 @@ class CorrectViewController: BaseController {
     
     func configureCorrectAnswer() {
         resultView.backgroundColor = UIColor(named: "greenButton")
-        scoreImage.image = UIImage(named: "star")
     }
     
     func configureWrongAnswer() {
         resultView.backgroundColor = UIColor(named: "redButton")
-        scoreImage.image = UIImage(named: "zero")
     }
     
     func setupTeamVeiw() {
@@ -71,7 +86,9 @@ class CorrectViewController: BaseController {
     
 }
 
+// Green View and labels
 extension CorrectViewController {
+    
     func setupResulView() {
         view.addSubview(resultView)
         resultView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,12 +112,91 @@ extension CorrectViewController {
         ])
     }
     
-    func setupScoreImage() {
-        resultView.addSubview(scoreImage)
-        scoreImage.translatesAutoresizingMaskIntoConstraints = false
+    func setupStarAndScoreView() {
+        resultView.addSubview(starView)
+        starView.addSubview(scoreView)
+        starView.translatesAutoresizingMaskIntoConstraints = false
+        scoreView.translatesAutoresizingMaskIntoConstraints = false
+        starView.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
-            scoreImage.bottomAnchor.constraint(equalTo: nextStep.topAnchor, constant: -8),
-            scoreImage.centerXAnchor.constraint(equalTo: resultView.centerXAnchor)
+            starView.centerXAnchor.constraint(equalTo: resultView.centerXAnchor),
+            starView.bottomAnchor.constraint(equalTo: nextStep.topAnchor, constant: -20),
+            scoreView.centerXAnchor.constraint(equalTo: starView.centerXAnchor, constant: -4),
+            scoreView.bottomAnchor.constraint(equalTo: nextStep.topAnchor, constant: -45)
+        ])
+        
+    }
+    
+    func youGetLabelView () {
+        resultView.addSubview(youGet)
+        youGet.translatesAutoresizingMaskIntoConstraints = false
+        youGet.text = "Вы получаете:"
+        youGet.textAlignment = .center
+        NSLayoutConstraint.activate([
+            youGet.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 21),
+            youGet.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -21),
+            youGet.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -190)
+            
+        ])
+    }
+    
+    func congratulationView () {
+        resultView.addSubview(congratulationLabel)
+        congratulationLabel.translatesAutoresizingMaskIntoConstraints = false
+        congratulationLabel.text = "Поздравляем!"
+        congratulationLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        congratulationLabel.textAlignment = .center
+        NSLayoutConstraint.activate([
+            congratulationLabel.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 80),
+            congratulationLabel.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -80),
+            congratulationLabel.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -236)
+            
+        ])
+    }
+    
+    
+//Red view and labels
+    
+    func setupZeroAndScoreView() {
+        resultView.addSubview(circleView)
+        circleView.addSubview (scoreZeroView)
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        scoreZeroView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            circleView.centerXAnchor.constraint(equalTo: resultView.centerXAnchor),
+            circleView.bottomAnchor.constraint(equalTo: nextStep.topAnchor, constant: -20),
+            scoreZeroView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor, constant: 0),
+            scoreZeroView.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -105)
+        ])
+//
+    }
+//
+    func youDontGetTheScore () {
+        resultView.addSubview(youDontGetScoreLabel)
+        youDontGetScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        youDontGetScoreLabel.text = "Вы не отгадали слово и не получаете очкков!"
+        youDontGetScoreLabel.textAlignment = .center
+        youDontGetScoreLabel.numberOfLines = 2
+        NSLayoutConstraint.activate([
+            youDontGetScoreLabel.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 21),
+            youDontGetScoreLabel.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -21),
+            youDontGetScoreLabel.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -190)
+
+        ])
+    }
+
+    func sadCongrats () {
+        resultView.addSubview(sadCongratsLabel)
+        sadCongratsLabel.translatesAutoresizingMaskIntoConstraints = false
+        sadCongratsLabel.text = "Увы и АХ!"
+        sadCongratsLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        sadCongratsLabel.textAlignment = .center
+        NSLayoutConstraint.activate([
+            sadCongratsLabel.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 80),
+            sadCongratsLabel.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -80),
+            sadCongratsLabel.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -236)
+
         ])
     }
     
