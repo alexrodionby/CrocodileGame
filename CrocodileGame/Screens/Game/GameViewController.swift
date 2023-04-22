@@ -64,6 +64,7 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
     
     @objc func rightButtonHandler() {
         stop()
+        viewModel.playSound("pravilnyiy-otvet")
         brain.correctAnswer()
         let team = brain.getCurrentTeam()
         brain.nextTeam()
@@ -77,6 +78,7 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
     
     @objc func wrongButtonHandler() {
         stop()
+        viewModel.playSound("game-lost")
         let team = brain.getCurrentTeam()
         brain.nextTeam()
         let controller = CorrectViewController(team: team)
