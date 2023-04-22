@@ -8,11 +8,12 @@ class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
     let resultView = UIView()
+    let scoreImage = UIImageView()
+    let congratulationLabel = UILabel()
     let scoreText = UILabel()
     //Correct labels
     let starView = UIImageView(image: UIImage (named: "star"))
     let scoreView = UIImageView(image: UIImage (named: "score"))
-    let congratulationLabel = UILabel()
     let youGet = UILabel()
     let nextStep = UILabel()
     //Incorrect labels
@@ -69,10 +70,12 @@ class CorrectViewController: BaseController {
     
     func configureCorrectAnswer() {
         resultView.backgroundColor = UIColor(named: "greenButton")
+        scoreImage.image = UIImage(named: "star")
     }
     
     func configureWrongAnswer() {
         resultView.backgroundColor = UIColor(named: "redButton")
+        scoreImage.image = UIImage(named: "zero")
     }
     
     func setupTeamVeiw() {
