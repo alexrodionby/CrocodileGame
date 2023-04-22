@@ -35,13 +35,15 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
     }
     
     func start() {
-        guard !brain.gameOver else {
+        if brain.gameOver {
             saveScore()
-            return
+            let controller = GameResultViewController(teams: brain.teams)
+            navigationController?.pushViewController(controller, animated: true)
+        } else {
+            viewModel.startTimer()
+            titleLabel.text = brain.getTitle()
+            descriptionLabel.text = brain.getDescription()
         }
-        self.viewModel.startTimer()
-        self.titleLabel.text = self.brain.getTitle()
-        self.descriptionLabel.text = self.brain.getDescription()
     }
     
     private func stop() {
@@ -52,11 +54,8 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
     
     func saveScore() {
         var scores = UserDefaults.standard.crocodileScores
-        let teams = self.brain.teams
-        scores.append(contentsOf: teams)
+        scores.append(contentsOf: brain.teams)
         UserDefaults.standard.crocodileScores = scores
-        let controller = GameResultViewController(teams: teams)
-        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func rightButtonHandler() {
@@ -88,6 +87,7 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
         let skipAction = UIAlertAction(title: "Да",
                                        style: .destructive) { _ in
             self.saveScore()
+            self.navigationController?.popToRootViewController(animated: true)
         }
 
         let cancelAction = UIAlertAction(title: "Отмена",
