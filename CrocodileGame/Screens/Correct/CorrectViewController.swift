@@ -8,8 +8,7 @@ class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
     let resultView = UIView()
-    let starView = UIImageView(image: UIImage (named: "starImage"))
-    let scoreView = UIImageView(image: UIImage (named: "scoreZero"))
+    let scoreImage = UIImageView()
     let congratulationLabel = UILabel()
     let scoreText = UILabel()
     let youGet = UILabel()
@@ -31,6 +30,7 @@ class CorrectViewController: BaseController {
         setupTeamVeiw()
         setupResulView()
         setupNextStep()
+        setupScoreImage()
         setupGreenButton("Передать ход")
     }
     
@@ -51,10 +51,12 @@ class CorrectViewController: BaseController {
     
     func configureCorrectAnswer() {
         resultView.backgroundColor = UIColor(named: "greenButton")
+        scoreImage.image = UIImage(named: "star")
     }
     
     func configureWrongAnswer() {
         resultView.backgroundColor = UIColor(named: "redButton")
+        scoreImage.image = UIImage(named: "zero")
     }
     
     func setupTeamVeiw() {
@@ -90,6 +92,15 @@ extension CorrectViewController {
             nextStep.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -46),
             nextStep.leadingAnchor.constraint(equalTo: resultView.leadingAnchor, constant: 16),
             nextStep.trailingAnchor.constraint(equalTo: resultView.trailingAnchor, constant: -16)
+        ])
+    }
+    
+    func setupScoreImage() {
+        resultView.addSubview(scoreImage)
+        scoreImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scoreImage.bottomAnchor.constraint(equalTo: nextStep.topAnchor, constant: -8),
+            scoreImage.centerXAnchor.constraint(equalTo: resultView.centerXAnchor)
         ])
     }
     
