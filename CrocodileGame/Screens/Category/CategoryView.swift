@@ -15,7 +15,6 @@ final class CategoryCell: UITableViewCell {
         ])
         categoryView.configure(with: category, selected: selected)
     }
-    
 }
 
 final class CategoryView: UIView {
