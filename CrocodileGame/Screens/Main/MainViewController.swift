@@ -1,10 +1,3 @@
-//
-//  MainViewController.swift
-//  CrocodileGame
-//
-//  Created by Alexandr Rodionov on 16.04.23.
-//
-
 import UIKit
 
 class MainViewController: UIViewController {
@@ -67,7 +60,7 @@ class MainViewController: UIViewController {
     }
     @objc func startButtonHandler() {
         UserDefaults.standard.topics = Topics.easy.rawValue
-        let controller = TeamViewController()
+        let controller = TeamViewController(numberOfTeam: 2)
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -118,9 +111,5 @@ class MainViewController: UIViewController {
         setupStartButton()
         setupRulesButton()
         setupResultsButton()
-        
     }
-    
-
-
 }

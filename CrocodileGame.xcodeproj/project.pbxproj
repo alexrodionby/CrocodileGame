@@ -37,6 +37,7 @@
 		27570B8329EF72CF000C0808 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 27570B7D29EF72CF000C0808 /* right.wav */; };
 		27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27570B8429EF7318000C0808 /* Bundle+Extension.swift */; };
 		27FBF7B229F2D06800846001 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B129F2D06800846001 /* TeamModel.swift */; };
+		27FBF7B429F3457700846001 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B329F3457700846001 /* String+Extension.swift */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		27570B7D29EF72CF000C0808 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right.wav; sourceTree = "<group>"; };
 		27570B8429EF7318000C0808 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		27FBF7B129F2D06800846001 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		27FBF7B329F3457700846001 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				27570B5829EDD351000C0808 /* BaseController.swift */,
 				27570B5A29EDDD88000C0808 /* UIButton+Extension.swift */,
 				27570B8429EF7318000C0808 /* Bundle+Extension.swift */,
+				27FBF7B329F3457700846001 /* String+Extension.swift */,
 				2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */,
 			);
 			path = Base;
@@ -426,6 +429,7 @@
 				27570B8529EF7318000C0808 /* Bundle+Extension.swift in Sources */,
 				2718CBCA29F0ACF7003942A4 /* UserDefaults+Extension.swift in Sources */,
 				27570B6329EF613D000C0808 /* GameViewModel.swift in Sources */,
+				27FBF7B429F3457700846001 /* String+Extension.swift in Sources */,
 				A12FDF5029EC573600B1E069 /* CorrectViewController.swift in Sources */,
 				A12FDF4C29EC570000B1E069 /* CategoryViewController.swift in Sources */,
 				2718CBD329F0C0DF003942A4 /* Team.swift in Sources */,
