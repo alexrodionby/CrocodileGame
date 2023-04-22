@@ -1,5 +1,9 @@
 import UIKit
 
+protocol CorrectAnswerProtocol: AnyObject {
+    func start()
+}
+
 class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
@@ -10,6 +14,7 @@ class CorrectViewController: BaseController {
     let scoreText = UILabel()
     let youGet = UILabel()
     let nextStep = UILabel()
+    weak var delegate: CorrectAnswerProtocol?
     
     init(team: Team = Team(name: "Ковбои", image: "cowboy")) {
         self.team = team
@@ -40,7 +45,8 @@ class CorrectViewController: BaseController {
     }
     
     override func greenButtonHandler() {
-        print(#function)
+        navigationController?.popViewController(animated: true)
+        delegate?.start()
     }
     
     func configureCorrectAnswer() {

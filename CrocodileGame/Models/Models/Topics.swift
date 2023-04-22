@@ -15,7 +15,7 @@ enum Topics: String, CaseIterable {
         case .hardcore: return "Hardcore.json"
         case .newyear: return "NewYear.json"
         case .normal: return "Normal.json"
-        case .phraseological: return "Phraselogical.json"
+        case .phraseological: return "Phraseological.json"
         case .summer: return "Summer.json"
         case .quick: return "QuickGame.json"
         }
