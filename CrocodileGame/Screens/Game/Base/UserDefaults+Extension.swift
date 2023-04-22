@@ -2,15 +2,23 @@ import Foundation
 
 extension UserDefaults {
     private enum Keys: String {
-        case topics
+        case scores
     }
     
-    var topics: String {
+    var crocodileScores: [Team] {
         get {
-            UserDefaults.standard.string(forKey: Keys.topics.rawValue) ?? ""
+            if let data = UserDefaults.standard.value(forKey: Keys.scores.rawValue) as? Data {
+                let decoder = JSONDecoder()
+                return (try? decoder.decode([Team].self, from: data)) ?? []
+            } else {
+                return []
+            }
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.topics.rawValue)
+            let encoder = JSONEncoder()
+            if let data = try? encoder.encode(newValue) {
+                UserDefaults.standard.set(data, forKey: Keys.scores.rawValue)
+            }
         }
     }
 }

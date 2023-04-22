@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func resultButtonHandler() {
-        let controller = GameResultViewController()
+        let controller = GameResultViewController(teams: UserDefaults.standard.crocodileScores.sorted(by: { $0.score > $1.score }))
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -59,7 +59,6 @@ class MainViewController: UIViewController {
         ])
     }
     @objc func startButtonHandler() {
-        UserDefaults.standard.topics = Topics.easy.rawValue
         let controller = TeamViewController(numberOfTeam: 2)
         navigationController?.pushViewController(controller, animated: true)
     }

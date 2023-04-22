@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-class GameViewController: BaseController {
+class GameViewController: BaseController, CorrectAnswerProtocol {
     private var brain: CrocodileBrain
     
     private let viewModel = GameViewModel()
@@ -34,24 +34,15 @@ class GameViewController: BaseController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func start() {
+    func start() {
         guard !brain.gameOver else {
             let controller = ResultAllViewController()
             navigationController?.pushViewController(controller, animated: true)
             return
         }
-        let goAction = UIAlertAction(title: "Поехали",
-                                       style: .default) { _ in
-            self.viewModel.startTimer()
-            self.titleLabel.text = self.brain.getTitle()
-            self.descriptionLabel.text = self.brain.getDescription()
-        }
-             
-        let alert = UIAlertController(title: nil,
-                                      message: "Приветствуем команду \(self.brain.getCurrentTeam().name)",
-                                      preferredStyle: .alert)
-        alert.addAction(goAction)
-        self.present(alert, animated: true)
+        self.viewModel.startTimer()
+        self.titleLabel.text = self.brain.getTitle()
+        self.descriptionLabel.text = self.brain.getDescription()
     }
     
     private func stop() {
@@ -64,32 +55,36 @@ class GameViewController: BaseController {
         stop()
         brain.correctAnswer()
         let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: true))
+        brain.nextTeam()
+        let controller = CorrectViewController(team: team)
+        controller.configure(with: team,
+                             answer: true,
+                             next: brain.getCurrentTeam().name)
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
     }
     
     @objc func wrongButtonHandler() {
         stop()
         let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: false))
+        brain.nextTeam()
+        let controller = CorrectViewController(team: team)
+        controller.configure(with: team,
+                             answer: false,
+                             next: brain.getCurrentTeam().name)
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
     }
     
     @objc func skipButtonHandler() {
         let skipAction = UIAlertAction(title: "Да",
                                        style: .destructive) { (action) in
-            self.navigationController?.popToRootViewController(animated: true)
+            var scores = UserDefaults.standard.crocodileScores
+            let teams = self.brain.teams
+            scores.append(contentsOf: teams)
+            UserDefaults.standard.crocodileScores = scores
+            let controller = GameResultViewController(teams: teams)
+            self.navigationController?.pushViewController(controller, animated: true)
         }
 
         let cancelAction = UIAlertAction(title: "Отмена",
@@ -108,7 +103,6 @@ class GameViewController: BaseController {
 extension GameViewController {
     override func setupViews() {
         super.setupViews()
-        UserDefaults.standard.topics = Topics.easy.rawValue
         setupLogoImage()
         setupTimerLabel()
         setupTitleLabel()

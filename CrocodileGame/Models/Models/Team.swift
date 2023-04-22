@@ -1,9 +1,9 @@
 import Foundation
 
-struct Team {
+struct Team: Codable {
     let name: String
     let image: String
-    var score = 112
+    var score = 0
     
     var formatScore: String {
         switch score % 10 {
