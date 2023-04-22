@@ -45,7 +45,6 @@ class CategoryViewController: BaseController {
     override func greenButtonHandler() {
         guard let index = selectedRow else { return }
         let words = model.fetchWords(at: index, count: 20)
-        print(teams.count, "teams.count")
         let brain = CrocodileBrain(words: words, teams: teams)
         let controller = GameViewController(brain: brain)
         navigationController?.pushViewController(controller, animated: true)

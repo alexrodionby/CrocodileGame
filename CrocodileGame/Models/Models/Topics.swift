@@ -1,6 +1,10 @@
 import Foundation
 
 enum Topics: String, CaseIterable {
+    case animal
+    case food
+    case person
+    case hobby
     case easy
     case hardcore
     case newyear
@@ -18,6 +22,10 @@ enum Topics: String, CaseIterable {
         case .phraseological: return "Phraseological.json"
         case .summer: return "Summer.json"
         case .quick: return "QuickGame.json"
+        case .animal: return "Animal.json"
+        case .food: return "Food.json"
+        case .person: return "Person.json"
+        case .hobby: return "Hobby.json"
         }
     }
     
@@ -30,6 +38,10 @@ enum Topics: String, CaseIterable {
         case .phraseological: return "Крылатыe фразы и фразеологизмы"
         case .summer: return "Летний отпуск"
         case .quick: return "Быстрая игра"
+        case .animal: return "Животные"
+        case .food: return "Еда"
+        case .person: return "Личности"
+        case .hobby: return "Хобби"
         }
     }
     
@@ -38,7 +50,7 @@ enum Topics: String, CaseIterable {
     }
     
     var image: String {
-        "burger"
+        "\(self.rawValue)Image"
     }
     
     static var categories: [Category] {
