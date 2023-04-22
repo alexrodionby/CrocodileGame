@@ -3,7 +3,7 @@ import UIKit
 class TeamViewController: BaseController {
     let model = TeamModel()
     let teams: [Team]
-    lazy var stack = UIStackView()
+    let tableView = UITableView()
 
     init(numberOfTeam: Int) {
         teams = model.randomTeams(count: numberOfTeam)
@@ -17,31 +17,41 @@ class TeamViewController: BaseController {
     override func setupViews() {
         super.setupViews()
         setupGreenButton("Игроки готовы")
-        setupStack()
+        setupTableView()
         title = "Кто играет?"
-        addNavBarButton(at: .left, with: "")
+        addNavBarButton(at: .left)
     }
     
-    private func setupStack() {
-        view.addSubview(stack)
-        teams.forEach {
-            stack.addArrangedSubview(TeamView(team: $0))
-        }
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.spacing = 28
-        stack.axis = .vertical
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.register(TeamCell.self, forCellReuseIdentifier: TeamCell.id)
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
-                                       multiplier: 1),
-            stack.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor,
-                                           multiplier: 2),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stack.trailingAnchor,
-                                           multiplier: 2)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: greenButton.topAnchor, constant: -80)
         ])
     }
-    
+        
     override func greenButtonHandler() {
         let controller = CategoryViewController(teams: teams)
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension TeamViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        teams.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TeamCell.id, for: indexPath) as? TeamCell else { return UITableViewCell()}
+        cell.configure(with: teams[indexPath.row])
+        cell.selectionStyle = .none
+        return cell
     }
 }

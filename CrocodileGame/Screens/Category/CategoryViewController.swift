@@ -2,9 +2,11 @@ import UIKit
 
 class CategoryViewController: BaseController {
     let teams: [Team]
-    var categories = GameStore.shared.categories
+    let model = CategoryModel()
     let tableView = UITableView()
-    var selectedRow: Int? = nil
+    var selectedRow: Int? = nil {
+        didSet { greenButton.isEnabled = selectedRow != nil }
+    }
     
     init(teams: [Team]) {
         self.teams = teams
@@ -20,27 +22,29 @@ class CategoryViewController: BaseController {
         setupGreenButton("Начать игру")
         setupTableView()
         title = "Категории"
+        greenButton.isEnabled = false
         addNavBarButton(at: .left)
     }
     
     private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.id)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: greenButton.topAnchor, constant: -80)
+            tableView.bottomAnchor.constraint(equalTo: greenButton.topAnchor, constant: -8)
         ])
     }
     
     override func greenButtonHandler() {
-        let words = ["боль в животе", "борозда", "ботинки", "браг"]
+        guard let index = selectedRow else { return }
+        let words = model.fetchWords(at: index, count: 20)
         let brain = CrocodileBrain(words: words, teams: teams)
         let controller = GameViewController(brain: brain)
         navigationController?.pushViewController(controller, animated: true)
@@ -49,13 +53,13 @@ class CategoryViewController: BaseController {
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
+        model.categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.id, for: indexPath) as? CategoryCell
         else { return UITableViewCell()}
-        let category = categories[indexPath.row]
+        let category = model.categories[indexPath.row]
         cell.configure(with: category, selected: selectedRow == indexPath.row)
         return cell
     }

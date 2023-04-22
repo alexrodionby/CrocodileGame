@@ -3,7 +3,7 @@ import Foundation
 struct Team {
     let name: String
     let image: String
-    var score = 0
+    var score = 112
     
     var formatScore: String {
         switch score % 10 {

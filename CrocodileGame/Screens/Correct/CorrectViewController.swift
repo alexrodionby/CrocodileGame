@@ -2,7 +2,7 @@ import UIKit
 
 class CorrectViewController: BaseController {
     let team: Team
-    lazy var teamView = TeamView(team: team)
+    lazy var teamView = TeamView()
     let resultView = UIView()
     let starView = UIImageView(image: UIImage (named: "starImage"))
     let scoreView = UIImageView(image: UIImage (named: "scoreZero"))
