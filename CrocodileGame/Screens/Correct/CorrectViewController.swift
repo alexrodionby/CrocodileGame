@@ -175,7 +175,7 @@ extension CorrectViewController {
     func youDontGetTheScore () {
         resultView.addSubview(youDontGetScoreLabel)
         youDontGetScoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        youDontGetScoreLabel.text = "Вы не отгадали слово и не получаете очкков!"
+        youDontGetScoreLabel.text = "Вы не отгадали слово и не получаете очков!"
         youDontGetScoreLabel.textAlignment = .center
         youDontGetScoreLabel.numberOfLines = 2
         NSLayoutConstraint.activate([
