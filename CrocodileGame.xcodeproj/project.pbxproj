@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270DEEE429F475E6008DBDBC /* game-lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 270DEEE229F475E6008DBDBC /* game-lost.mp3 */; };
+		270DEEE529F475E6008DBDBC /* pravilnyiy-otvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 270DEEE329F475E6008DBDBC /* pravilnyiy-otvet.mp3 */; };
 		2718CBCA29F0ACF7003942A4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */; };
 		2718CBCF29F0C088003942A4 /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBCE29F0C088003942A4 /* Topics.swift */; };
 		2718CBD329F0C0DF003942A4 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2718CBD229F0C0DF003942A4 /* Team.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270DEEE229F475E6008DBDBC /* game-lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-lost.mp3"; sourceTree = "<group>"; };
+		270DEEE329F475E6008DBDBC /* pravilnyiy-otvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pravilnyiy-otvet.mp3"; sourceTree = "<group>"; };
 		2718CBC929F0ACF7003942A4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		2718CBCE29F0C088003942A4 /* Topics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
 		2718CBD229F0C0DF003942A4 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 		27570B7729EF72A1000C0808 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				270DEEE229F475E6008DBDBC /* game-lost.mp3 */,
+				270DEEE329F475E6008DBDBC /* pravilnyiy-otvet.mp3 */,
 				27570B5D29EE8CB8000C0808 /* alarm.mp3 */,
 				27570B7929EF72CF000C0808 /* fail.mp3 */,
 				27570B7C29EF72CF000C0808 /* lastSeconds.wav */,
@@ -419,6 +425,7 @@
 				27570B6E29EF724C000C0808 /* NewYear.json in Resources */,
 				27570B7529EF724C000C0808 /* Normal.json in Resources */,
 				27570B8129EF72CF000C0808 /* swipe.wav in Resources */,
+				270DEEE529F475E6008DBDBC /* pravilnyiy-otvet.mp3 in Resources */,
 				27570B7E29EF72CF000C0808 /* roundEnd.wav in Resources */,
 				27FBF7B829F3A05100846001 /* Animal.json in Resources */,
 				27570B8329EF72CF000C0808 /* right.wav in Resources */,
@@ -428,6 +435,7 @@
 				27FBF7BC29F3A0A900846001 /* Food.json in Resources */,
 				27570B7129EF724C000C0808 /* Teams.json in Resources */,
 				27570B7429EF724C000C0808 /* Hardcore.json in Resources */,
+				270DEEE429F475E6008DBDBC /* game-lost.mp3 in Resources */,
 				A12FDF3A29EC536500B1E069 /* Assets.xcassets in Resources */,
 				27570B7F29EF72CF000C0808 /* fail.mp3 in Resources */,
 				27570B7229EF724C000C0808 /* Summer.json in Resources */,
