@@ -16,7 +16,7 @@ struct CrocodileBrain {
     }
     
     var gameOver: Bool {
-        words.isEmpty || currentRound == 1
+        words.isEmpty || currentRound == 5
     }
     
     func getDescription() -> String {

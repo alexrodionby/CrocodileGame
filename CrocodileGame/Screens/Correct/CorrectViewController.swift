@@ -77,12 +77,10 @@ class CorrectViewController: BaseController {
     
     func configureCorrectAnswer() {
         resultView.backgroundColor = UIColor(named: "greenButton")
-        scoreImage.image = UIImage(named: "star")
     }
     
     func configureWrongAnswer() {
         resultView.backgroundColor = UIColor(named: "redButton")
-        scoreImage.image = UIImage(named: "zero")
     }
     
     func setupTeamVeiw() {
