@@ -38,6 +38,11 @@
 		27FBF7B229F2D06800846001 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B129F2D06800846001 /* TeamModel.swift */; };
 		27FBF7B429F3457700846001 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B329F3457700846001 /* String+Extension.swift */; };
 		27FBF7B629F367D200846001 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7B529F367D200846001 /* CategoryModel.swift */; };
+		27FBF7B829F3A05100846001 /* Animal.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FBF7B729F3A05100846001 /* Animal.json */; };
+		27FBF7BC29F3A0A900846001 /* Food.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FBF7BB29F3A0A900846001 /* Food.json */; };
+		27FBF7C029F3A10500846001 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FBF7BF29F3A10500846001 /* Person.json */; };
+		27FBF7C229F3A12400846001 /* Hobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FBF7C129F3A12400846001 /* Hobby.json */; };
+		27FBF7C429F3BC3D00846001 /* theEnd.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 27FBF7C329F3BC3D00846001 /* theEnd.mp3 */; };
 		A12FDF3129EC536400B1E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3029EC536400B1E069 /* AppDelegate.swift */; };
 		A12FDF3329EC536400B1E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDF3229EC536400B1E069 /* SceneDelegate.swift */; };
 		A12FDF3829EC536400B1E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12FDF3629EC536400B1E069 /* Main.storyboard */; };
@@ -86,6 +91,11 @@
 		27FBF7B129F2D06800846001 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		27FBF7B329F3457700846001 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		27FBF7B529F367D200846001 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		27FBF7B729F3A05100846001 /* Animal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Animal.json; sourceTree = "<group>"; };
+		27FBF7BB29F3A0A900846001 /* Food.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Food.json; sourceTree = "<group>"; };
+		27FBF7BF29F3A10500846001 /* Person.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
+		27FBF7C129F3A12400846001 /* Hobby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Hobby.json; sourceTree = "<group>"; };
+		27FBF7C329F3BC3D00846001 /* theEnd.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theEnd.mp3; sourceTree = "<group>"; };
 		A12FDF2D29EC536400B1E069 /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A12FDF3029EC536400B1E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A12FDF3229EC536400B1E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +166,10 @@
 				27570B6D29EF724C000C0808 /* QuickGame.json */,
 				27570B6929EF724B000C0808 /* Summer.json */,
 				27570B6829EF724B000C0808 /* Teams.json */,
+				27FBF7B729F3A05100846001 /* Animal.json */,
+				27FBF7BB29F3A0A900846001 /* Food.json */,
+				27FBF7BF29F3A10500846001 /* Person.json */,
+				27FBF7C129F3A12400846001 /* Hobby.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -167,6 +181,7 @@
 				27570B7929EF72CF000C0808 /* fail.mp3 */,
 				27570B7C29EF72CF000C0808 /* lastSeconds.wav */,
 				27570B7D29EF72CF000C0808 /* right.wav */,
+				27FBF7C329F3BC3D00846001 /* theEnd.mp3 */,
 				27570B7829EF72CF000C0808 /* roundEnd.wav */,
 				27570B7B29EF72CF000C0808 /* swipe.wav */,
 				27570B7A29EF72CF000C0808 /* wrong.wav */,
@@ -394,18 +409,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FBF7C429F3BC3D00846001 /* theEnd.mp3 in Resources */,
 				27570B7329EF724C000C0808 /* Phraseological.json in Resources */,
 				27570B5E29EE8CB8000C0808 /* alarm.mp3 in Resources */,
 				27570B8029EF72CF000C0808 /* wrong.wav in Resources */,
 				A12FDF3D29EC536500B1E069 /* LaunchScreen.storyboard in Resources */,
+				27FBF7C029F3A10500846001 /* Person.json in Resources */,
 				27570B8229EF72CF000C0808 /* lastSeconds.wav in Resources */,
 				27570B6E29EF724C000C0808 /* NewYear.json in Resources */,
 				27570B7529EF724C000C0808 /* Normal.json in Resources */,
 				27570B8129EF72CF000C0808 /* swipe.wav in Resources */,
 				27570B7E29EF72CF000C0808 /* roundEnd.wav in Resources */,
+				27FBF7B829F3A05100846001 /* Animal.json in Resources */,
 				27570B8329EF72CF000C0808 /* right.wav in Resources */,
 				27570B7029EF724C000C0808 /* EasyWords.json in Resources */,
+				27FBF7C229F3A12400846001 /* Hobby.json in Resources */,
 				27570B7629EF724C000C0808 /* QuickGame.json in Resources */,
+				27FBF7BC29F3A0A900846001 /* Food.json in Resources */,
 				27570B7129EF724C000C0808 /* Teams.json in Resources */,
 				27570B7429EF724C000C0808 /* Hardcore.json in Resources */,
 				A12FDF3A29EC536500B1E069 /* Assets.xcassets in Resources */,
@@ -594,7 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrocodileGame/Resources/Info.plist;
@@ -629,7 +649,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrocodileGame/Resources/Info.plist;

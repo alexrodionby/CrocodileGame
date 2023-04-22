@@ -9,11 +9,11 @@ final class GameViewModel {
     weak var delegate: GameViewModelProtocol?
     var timer: Timer?
     var player: AVAudioPlayer!
-    var currentTime = 59
+    var currentTime = 19
     
     func startTimer() {
         timer?.invalidate()
-        currentTime = 59
+        currentTime = 19
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
                                      selector: #selector(updateTimer),
@@ -36,6 +36,9 @@ final class GameViewModel {
         if currentTime > 0 {
             currentTime -= 1
             delegate?.updateUI(seconds: currentTime)
+            if currentTime == 12 {
+                playSound("theEnd")
+            }
         } else {
             timer?.invalidate()
             playSound()
