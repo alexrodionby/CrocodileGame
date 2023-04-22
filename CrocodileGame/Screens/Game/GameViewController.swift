@@ -34,6 +34,10 @@ class GameViewController: BaseController, CorrectAnswerProtocol {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     func start() {
         if brain.gameOver {
             saveScore()

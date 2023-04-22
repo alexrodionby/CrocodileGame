@@ -19,10 +19,17 @@ class GameResultViewController: BaseController {
         setupGreenButton("Начать сначала")
         setupTableView()
         title = "Результаты"
+        addNavBarButton(at: .left)
     }
+    
+    override func navBarLeftButtonHandler() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     override func greenButtonHandler() {
         navigationController?.popToRootViewController(animated: true)
     }
+    
 }
 
 extension GameResultViewController {
