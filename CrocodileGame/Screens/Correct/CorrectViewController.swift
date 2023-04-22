@@ -8,11 +8,11 @@ class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
     let resultView = UIView()
+    let scoreText = UILabel()
     //Correct labels
     let starView = UIImageView(image: UIImage (named: "star"))
     let scoreView = UIImageView(image: UIImage (named: "score"))
     let congratulationLabel = UILabel()
-    let scoreText = UILabel()
     let youGet = UILabel()
     let nextStep = UILabel()
     //Incorrect labels
@@ -48,6 +48,7 @@ class CorrectViewController: BaseController {
             setupStarAndScoreView()
             youGetLabelView ()
             congratulationView ()
+            scoreAddtoView()
         } else {
             setupResulView()
             setupNextStep()
@@ -81,6 +82,8 @@ class CorrectViewController: BaseController {
             teamView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
         ])
     }
+    
+    
     
 }
 
@@ -150,6 +153,19 @@ extension CorrectViewController {
             congratulationLabel.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -236)
             
         ])
+    }
+    
+    func scoreAddtoView () {
+        resultView.addSubview(scoreText)
+        scoreText.text = "ОЧКО"
+        scoreText.textColor = UIColor (named: "yellowScoreColor")
+        scoreText.font = UIFont.systemFont(ofSize: 15)
+        scoreText.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scoreText.centerXAnchor.constraint(equalTo: resultView.centerXAnchor),
+            scoreText.bottomAnchor.constraint(equalTo: resultView.bottomAnchor, constant: -76)
+        ])
+        
     }
     
     
