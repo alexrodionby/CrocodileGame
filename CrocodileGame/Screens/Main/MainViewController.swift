@@ -1,10 +1,3 @@
-//
-//  MainViewController.swift
-//  CrocodileGame
-//
-//  Created by Alexandr Rodionov on 16.04.23.
-//
-
 import UIKit
 
 class MainViewController: UIViewController {
@@ -44,12 +37,12 @@ class MainViewController: UIViewController {
             resultsButton.topAnchor.constraint(equalTo: rulesButton.bottomAnchor, constant: 18),
             resultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 83),
             resultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -81),
-            resultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -88)
+            resultsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -88)
         ])
     }
     
     @objc func resultButtonHandler() {
-        let controller = GameResultViewController()
+        let controller = GameResultViewController(teams: UserDefaults.standard.crocodileScores.sorted(by: { $0.score > $1.score }))
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -66,8 +59,7 @@ class MainViewController: UIViewController {
         ])
     }
     @objc func startButtonHandler() {
-        UserDefaults.standard.topics = Topics.easy.rawValue
-        let controller = TeamViewController()
+        let controller = TeamViewController(numberOfTeam: 2)
         navigationController?.pushViewController(controller, animated: true)
     }
 
@@ -118,9 +110,5 @@ class MainViewController: UIViewController {
         setupStartButton()
         setupRulesButton()
         setupResultsButton()
-        
     }
-    
-
-
 }

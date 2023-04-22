@@ -10,13 +10,13 @@ struct CrocodileBrain {
     var words: [String]
     var teams: [Team]
     var currentTeam = 0
-    mutating func getTitle() -> String {
-        let result = gameOver ? "Конец игры" : words.removeFirst()
-        return result
+    var currentRound = 0
+    func getTitle() -> String {
+        words.first ?? "Конец игры"
     }
     
     var gameOver: Bool {
-        words.isEmpty
+        words.isEmpty || currentRound == 5
     }
     
     func getDescription() -> String {
@@ -41,9 +41,11 @@ struct CrocodileBrain {
     }
     
     mutating func nextTeam() {
+        words.removeFirst()
         currentTeam += 1
         if currentTeam == teams.count {
             currentTeam = 0
+            currentRound += 1
         }
     }
 }

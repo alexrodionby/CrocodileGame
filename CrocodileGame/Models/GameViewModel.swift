@@ -23,6 +23,9 @@ final class GameViewModel {
     
     func stopTimer() {
         timer?.invalidate()
+        if let player = player {
+            player.stop()
+        }
     }
     
     func playSound(_ title: String = "fail") {
@@ -36,6 +39,9 @@ final class GameViewModel {
         if currentTime > 0 {
             currentTime -= 1
             delegate?.updateUI(seconds: currentTime)
+            if currentTime == 12 {
+                playSound("theEnd")
+            }
         } else {
             timer?.invalidate()
             playSound()

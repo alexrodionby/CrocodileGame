@@ -1,7 +1,22 @@
 import UIKit
 
+final class TeamCell: UITableViewCell {
+    static let id = "TeamCell"
+    let teamView = TeamView()
+    func configure(with team: Team) {
+        backgroundColor = .clear
+        contentView.addSubview(teamView)
+        teamView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            teamView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            teamView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            teamView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            teamView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+        ])
+        teamView.configure(with: team)
+    }
+}
 final class TeamView: UIView {
-    let team: Team
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let scoreLabel = UILabel()
@@ -9,9 +24,8 @@ final class TeamView: UIView {
 
     let scoreStack = UIStackView()
     
-    init(team: Team) {
-        self.team = team
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
     
@@ -20,38 +34,31 @@ final class TeamView: UIView {
     }
     
     func configure(with team: Team) {
+        imageView.image = UIImage(named: team.image)
+        titleLabel.text = team.name
         scoreLabel.text = "\(team.score)"
-    }
-    func configure(with color: UIColor) {
-        backgroundColor = color
+        scoreTitle.text = team.formatScore
+        scoreStack.isHidden = team.score == 0
     }
 }
 
 extension TeamView {
     private func setupViews() {
+        setupView()
+        setupImageView()
+        setupTitleLabel()
+        setupScoreStack()
+    }
+    
+    private func setupView() {
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 96).isActive = true
         layer.cornerRadius = 10
-        setupImageView()
-        setupTitleLabel()
-        setupScoreLabel()
     }
-    
-    private func setupTitleLabel() {
-        addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = team.name
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 58),
-            titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
-        ])
-    }
-    
     private func setupImageView() {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: team.image)
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -60,19 +67,29 @@ extension TeamView {
         ])
     }
     
-    private func setupScoreLabel() {
+    private func setupTitleLabel() {
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.numberOfLines = 0
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20),
+            titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
+        ])
+    }
+    
+    
+    private func setupScoreStack() {
         addSubview(scoreStack)
         scoreStack.translatesAutoresizingMaskIntoConstraints = false
         scoreStack.addArrangedSubview(scoreLabel)
-        scoreLabel.text = "\(team.score)"
-        scoreLabel.font = .italicSystemFont(ofSize: 50)
+        scoreLabel.font = .italicSystemFont(ofSize: 30)
         scoreStack.addArrangedSubview(scoreTitle)
-        scoreTitle.text = "Очки"
         scoreStack.axis = .vertical
-        scoreStack.isHidden = team.score == 0
+        scoreStack.alignment = .trailing
         NSLayoutConstraint.activate([
             scoreStack.centerYAnchor.constraint(equalTo: centerYAnchor),
-            scoreStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            scoreStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            scoreStack.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8)
         ])
     }
 }

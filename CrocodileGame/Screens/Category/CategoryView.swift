@@ -15,7 +15,6 @@ final class CategoryCell: UITableViewCell {
         ])
         categoryView.configure(with: category, selected: selected)
     }
-    
 }
 
 final class CategoryView: UIView {
@@ -23,7 +22,7 @@ final class CategoryView: UIView {
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let selectedImage = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-    init(category: Category = Category(name: "Животные", image: "animal", color: "animalColor")) {
+    init(category: Category = Category(name: "Животные", image: "animal", color: "animalColor", fileName: "")) {
         self.category = category
         super.init(frame: .zero)
         setupViews()
@@ -59,9 +58,10 @@ extension CategoryView {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = category.name
+        titleLabel.numberOfLines = 0
         titleLabel.textColor = .white
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 58),
+            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20),
             titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
     }
@@ -83,6 +83,7 @@ extension CategoryView {
         selectedImage.translatesAutoresizingMaskIntoConstraints = false
         selectedImage.tintColor = .white
         NSLayoutConstraint.activate([
+            selectedImage.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
             selectedImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             selectedImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             selectedImage.widthAnchor.constraint(equalToConstant: 30),

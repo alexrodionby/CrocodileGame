@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-class GameViewController: BaseController {
+class GameViewController: BaseController, CorrectAnswerProtocol {
     private var brain: CrocodileBrain
     
     private let viewModel = GameViewModel()
@@ -34,24 +34,20 @@ class GameViewController: BaseController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    private func start() {
-        guard !brain.gameOver else {
-            let controller = ResultAllViewController()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    func start() {
+        if brain.gameOver {
+            saveScore()
+            let controller = GameResultViewController(teams: brain.teams)
             navigationController?.pushViewController(controller, animated: true)
-            return
+        } else {
+            viewModel.startTimer()
+            titleLabel.text = brain.getTitle()
+            descriptionLabel.text = brain.getDescription()
         }
-        let goAction = UIAlertAction(title: "Поехали",
-                                       style: .default) { _ in
-            self.viewModel.startTimer()
-            self.titleLabel.text = self.brain.getTitle()
-            self.descriptionLabel.text = self.brain.getDescription()
-        }
-             
-        let alert = UIAlertController(title: nil,
-                                      message: "Приветствуем команду \(self.brain.getCurrentTeam().name)",
-                                      preferredStyle: .alert)
-        alert.addAction(goAction)
-        self.present(alert, animated: true)
     }
     
     private func stop() {
@@ -60,35 +56,41 @@ class GameViewController: BaseController {
         viewModel.stopTimer()
     }
     
+    func saveScore() {
+        var scores = UserDefaults.standard.crocodileScores
+        scores.append(contentsOf: brain.teams)
+        UserDefaults.standard.crocodileScores = scores
+    }
+    
     @objc func rightButtonHandler() {
         stop()
         brain.correctAnswer()
         let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: true))
+        brain.nextTeam()
+        let controller = CorrectViewController(team: team)
+        controller.configure(with: team,
+                             answer: true,
+                             next: brain.getCurrentTeam().name)
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
     }
     
     @objc func wrongButtonHandler() {
         stop()
         let team = brain.getCurrentTeam()
-        let controller = UIHostingController(rootView: GameView(team: team, correct: false))
+        brain.nextTeam()
+        let controller = CorrectViewController(team: team)
+        controller.configure(with: team,
+                             answer: false,
+                             next: brain.getCurrentTeam().name)
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            controller.navigationController?.popViewController(animated: true)
-            self.brain.nextTeam()
-            self.start()
-        }
     }
     
     @objc func skipButtonHandler() {
         let skipAction = UIAlertAction(title: "Да",
-                                       style: .destructive) { (action) in
+                                       style: .destructive) { _ in
+            self.saveScore()
             self.navigationController?.popToRootViewController(animated: true)
         }
 
@@ -108,7 +110,6 @@ class GameViewController: BaseController {
 extension GameViewController {
     override func setupViews() {
         super.setupViews()
-        UserDefaults.standard.topics = Topics.easy.rawValue
         setupLogoImage()
         setupTimerLabel()
         setupTitleLabel()
