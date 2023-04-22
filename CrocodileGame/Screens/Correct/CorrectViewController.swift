@@ -8,12 +8,11 @@ class CorrectViewController: BaseController {
     let team: Team
     lazy var teamView = TeamView()
     let resultView = UIView()
-    let scoreImage = UIImageView()
-    let congratulationLabel = UILabel()
     let scoreText = UILabel()
     //Correct labels
     let starView = UIImageView(image: UIImage (named: "star"))
     let scoreView = UIImageView(image: UIImage (named: "score"))
+    let congratulationLabel = UILabel()
     let youGet = UILabel()
     let nextStep = UILabel()
     //Incorrect labels
@@ -46,8 +45,6 @@ class CorrectViewController: BaseController {
         
         super.setupViews()
         setupTeamVeiw()
-        setupResulView()
-        setupNextStep()
         setupGreenButton("Передать ход")
     }
     
