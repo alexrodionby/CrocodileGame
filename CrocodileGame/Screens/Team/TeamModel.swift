@@ -2,7 +2,7 @@ import Foundation
 
 struct TeamModel {
     let allImages = ["animal", "burger", "cowboy", "hobby"]
-    let allNames = [
+    var allNames = [
         "Шарик в кеглю",
         "Волшебные Волшебники",
         "Спецотряд \"Ромашка\"",

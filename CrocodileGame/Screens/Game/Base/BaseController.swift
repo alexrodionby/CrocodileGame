@@ -28,6 +28,23 @@ class BaseController: UIViewController {
     }
     func navBarRightButtonHandler() {}
     func greenButtonHandler() {}
+    func addNewTeam () {
+//        var teams: [Team]
+        var team = TeamModel()
+        let alertController = UIAlertController(title: "Введите название команды", message: "", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Добавить команду", style: UIAlertAction.Style.default) { (alert) in
+            let newTeam = alertController.textFields![0].text
+            team.allNames.append(contentsOf: [newTeam!])
+           print([team])
+            
+            
+        })
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Название команды"
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+   
     
 }
 
@@ -95,7 +112,7 @@ extension BaseController {
                               title: title,
                               height: 63)
         addTeamButton.addTarget(self,
-                              action: #selector(greenButtonHandler),
+                              action: #selector(addNewTeam),
                               for: .primaryActionTriggered)
         
         
