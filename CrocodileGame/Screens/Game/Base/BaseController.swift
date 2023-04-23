@@ -8,6 +8,7 @@ enum NavBarPosition {
 class BaseController: UIViewController {
     let backgroundImage = UIImageView(image: UIImage(named: "background"))
     let greenButton = UIButton(type: .system)
+    let addTeamButton = UIButton (type: .system)
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -27,6 +28,7 @@ class BaseController: UIViewController {
     }
     func navBarRightButtonHandler() {}
     func greenButtonHandler() {}
+    
 }
 
 extension BaseController {
@@ -83,6 +85,27 @@ extension BaseController {
                                                         constant: 14),
             greenButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                          constant: -14)
+        ])
+    }
+    
+    func setupAddTeamButton(_ title: String) {
+        view.addSubview(addTeamButton)
+        addTeamButton.translatesAutoresizingMaskIntoConstraints = false
+        addTeamButton.configure(with: .green,
+                              title: title,
+                              height: 63)
+        addTeamButton.addTarget(self,
+                              action: #selector(greenButtonHandler),
+                              for: .primaryActionTriggered)
+        
+        
+        NSLayoutConstraint.activate([
+            addTeamButton.bottomAnchor.constraint(equalTo: greenButton.topAnchor,
+                                                constant: -14),
+            addTeamButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                 constant: 14),
+            addTeamButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                  constant: -14)
         ])
     }
 }

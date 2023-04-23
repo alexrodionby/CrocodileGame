@@ -17,6 +17,7 @@ class TeamViewController: BaseController {
     override func setupViews() {
         super.setupViews()
         setupGreenButton("Игроки готовы")
+        setupAddTeamButton ("Добавить команду")
         setupTableView()
         title = "Кто играет?"
         addNavBarButton(at: .left)
