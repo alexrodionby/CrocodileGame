@@ -30,12 +30,12 @@ class BaseController: UIViewController {
     func greenButtonHandler() {}
     func addNewTeam () {
 //        var teams: [Team]
-        var teams = TeamModel()
+        var team = TeamModel()
         let alertController = UIAlertController(title: "Введите название команды", message: "", preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Добавить команду", style: UIAlertAction.Style.default) { (alert) in
             let newTeam = alertController.textFields![0].text
-            teams.allNames.append(contentsOf: [newTeam!])
-           print([teams])
+            team.allNames.append(contentsOf: [newTeam!])
+           print([team])
             
             
         })
