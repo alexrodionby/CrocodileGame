@@ -155,6 +155,7 @@ extension CorrectViewController {
         resultView.addSubview(congratulationLabel)
         congratulationLabel.translatesAutoresizingMaskIntoConstraints = false
         congratulationLabel.text = "Поздравляем!"
+        congratulationLabel.adjustsFontSizeToFitWidth = true
         congratulationLabel.font = UIFont.boldSystemFont(ofSize: 30)
         congratulationLabel.textAlignment = .center
         NSLayoutConstraint.activate([
