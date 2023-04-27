@@ -1,12 +1,22 @@
 import UIKit
 
+
+
 class TeamViewController: BaseController {
     let model = TeamModel()
     let teams: [Team]
     let tableView = UITableView()
 
+  
+    
+    
+
     init(numberOfTeam: Int) {
         teams = model.randomTeams(count: numberOfTeam)
+        super.init(nibName: nil, bundle: nil)
+    }
+    init(team: String, lastTeam: Int) {
+        teams = model.lastTeam(count: lastTeam)
         super.init(nibName: nil, bundle: nil)
     }
     

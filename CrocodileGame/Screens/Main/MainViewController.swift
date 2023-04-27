@@ -58,10 +58,15 @@ class MainViewController: UIViewController {
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -51)
         ])
     }
+    
+    
+    
     @objc func startButtonHandler() {
         let controller = TeamViewController(numberOfTeam: 2)
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
