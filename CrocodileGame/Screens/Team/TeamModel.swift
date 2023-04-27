@@ -71,6 +71,13 @@ struct TeamModel {
         "Прозрачные гонщики",
         "Загугленное поколение"
         ]
+    
+    var newTeams = [
+    "Член"
+    
+    ]
+    
+    
     var currentTeams = [Team]()
  
     
@@ -89,15 +96,15 @@ struct TeamModel {
     
     
     
-    func lastTeam(count: Int) -> [Team] {
-        let names = newTeamCrodile
+    func addNewTeam (count: Int) -> [Team] {
+        var names = newTeamCrodile
         var images = allImages
         guard count < allNames.count, count < allImages.count else { return [] }
         var result: [Team] = []
         for _ in 0..<count {
-            let name = names.last!
+          
             let image = images.remove(at: Int.random(in: 0..<images.count))
-            result.append(Team(name: name, image: image))
+            result.append(Team(name: names, image: image))
             
         }
         return result

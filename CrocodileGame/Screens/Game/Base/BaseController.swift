@@ -18,7 +18,7 @@ class BaseController: UIViewController {
     }
 }
 var team = TeamModel()
-var newTeamCrodile = team.allNames
+var newTeamCrodile = String ()
 
 @objc extension BaseController {
     func setupViews() {
@@ -32,32 +32,7 @@ var newTeamCrodile = team.allNames
     func navBarRightButtonHandler() {}
     func greenButtonHandler() {}
 
-    func addNewTeam () {
-//        var teams: [Team]
-        
-        
-        let alertController = UIAlertController(title: "Введите название команды", message: "", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Добавить команду", style: UIAlertAction.Style.default) { (alert) in
-            let newTeam = alertController.textFields![0].text
-            newTeamCrodile.append(newTeam!)
-            print(newTeamCrodile)
-            
-            
-            self.addNewTeamHandler()
-            
-            
-        })
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Название команды"
-        }
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
-    @objc func addNewTeamHandler () {
-        let newTeamAdded = TeamViewController(team: newTeamCrodile.last!, lastTeam: 1)
-        navigationController?.pushViewController(newTeamAdded, animated: true)
-    }
+   
    
     
 }
@@ -119,24 +94,5 @@ extension BaseController {
         ])
     }
     
-    func setupAddTeamButton(_ title: String) {
-        view.addSubview(addTeamButton)
-        addTeamButton.translatesAutoresizingMaskIntoConstraints = false
-        addTeamButton.configure(with: .green,
-                              title: title,
-                              height: 63)
-        addTeamButton.addTarget(self,
-                              action: #selector(addNewTeam),
-                              for: .primaryActionTriggered)
-        
-        
-        NSLayoutConstraint.activate([
-            addTeamButton.bottomAnchor.constraint(equalTo: greenButton.topAnchor,
-                                                constant: -14),
-            addTeamButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                 constant: 14),
-            addTeamButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                  constant: -14)
-        ])
-    }
+    
 }
