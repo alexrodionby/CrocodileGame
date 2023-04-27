@@ -14,8 +14,11 @@ class BaseController: UIViewController {
         setupViews()
         layoutViews()
         configureAppearance()
+        
     }
 }
+var team = TeamModel()
+var newTeamCrodile = team.allNames
 
 @objc extension BaseController {
     func setupViews() {
@@ -28,14 +31,19 @@ class BaseController: UIViewController {
     }
     func navBarRightButtonHandler() {}
     func greenButtonHandler() {}
+
     func addNewTeam () {
 //        var teams: [Team]
-        var team = TeamModel()
+        
+        
         let alertController = UIAlertController(title: "Введите название команды", message: "", preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "Добавить команду", style: UIAlertAction.Style.default) { (alert) in
             let newTeam = alertController.textFields![0].text
-            team.allNames.append(contentsOf: [newTeam!])
-           print([team])
+            newTeamCrodile.append(newTeam!)
+            print(newTeamCrodile)
+            
+            
+            self.addNewTeamHandler()
             
             
         })
@@ -43,6 +51,12 @@ class BaseController: UIViewController {
             textField.placeholder = "Название команды"
         }
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func addNewTeamHandler () {
+        let newTeamAdded = TeamViewController(team: newTeamCrodile.last!, lastTeam: 1)
+        navigationController?.pushViewController(newTeamAdded, animated: true)
     }
    
     
